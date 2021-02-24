@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zefu.business.mapper.BusSceneDefinitionMapper">
+    
+    <resultMap type="BusSceneDefinition" id="BusSceneDefinitionResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="type"    column="type"    />
+        <result property="macCode"    column="mac_code"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="masterIp"    column="master_ip"    />
+        <result property="relationId"    column="relation_id"    />
+        <result property="address"    column="address"    />
+        <result property="adminId"    column="admin_id"    />
+        <result property="adminName"    column="admin_name"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectBusSceneDefinitionVo">
+        select id, name, type, mac_code, parent_id, master_ip, relation_id, address, admin_id, admin_name, status, create_by, create_time, update_by, update_time, remark from bus_scene_definition
+    </sql>
+
+    <select id="selectBusSceneDefinitionList" parameterType="BusSceneDefinition" resultMap="BusSceneDefinitionResult">
+        <include refid="selectBusSceneDefinitionVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="macCode != null  and macCode != ''"> and mac_code = #{macCode}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="masterIp != null  and masterIp != ''"> and master_ip = #{masterIp}</if>
+            <if test="relationId != null "> and relation_id = #{relationId}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="adminId != null "> and admin_id = #{adminId}</if>
+            <if test="adminName != null  and adminName != ''"> and admin_name like concat('%', #{adminName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectBusSceneDefinitionById" parameterType="Long" resultMap="BusSceneDefinitionResult">
+        <include refid="selectBusSceneDefinitionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBusSceneDefinition" parameterType="BusSceneDefinition" useGeneratedKeys="true" keyProperty="id">
+        insert into bus_scene_definition
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="type != null">type,</if>
+            <if test="macCode != null">mac_code,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="masterIp != null">master_ip,</if>
+            <if test="relationId != null">relation_id,</if>
+            <if test="address != null">address,</if>
+            <if test="adminId != null">admin_id,</if>
+            <if test="adminName != null">admin_name,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="type != null">#{type},</if>
+            <if test="macCode != null">#{macCode},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="masterIp != null">#{masterIp},</if>
+            <if test="relationId != null">#{relationId},</if>
+            <if test="address != null">#{address},</if>
+            <if test="adminId != null">#{adminId},</if>
+            <if test="adminName != null">#{adminName},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBusSceneDefinition" parameterType="BusSceneDefinition">
+        update bus_scene_definition
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="macCode != null">mac_code = #{macCode},</if>
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="masterIp != null">master_ip = #{masterIp},</if>
+            <if test="relationId != null">relation_id = #{relationId},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="adminId != null">admin_id = #{adminId},</if>
+            <if test="adminName != null">admin_name = #{adminName},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBusSceneDefinitionById" parameterType="Long">
+        delete from bus_scene_definition where id = #{id}
+    </delete>
+
+    <delete id="deleteBusSceneDefinitionByIds" parameterType="String">
+        delete from bus_scene_definition where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

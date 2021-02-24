@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zefu.common.security.service.TokenService,\
+  com.zefu.common.security.aspect.PreAuthorizeAspect,\
+  com.zefu.common.security.handler.GlobalExceptionHandler

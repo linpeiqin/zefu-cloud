@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zefu.business.mapper.BusEquipmentDefinitionMapper">
+    
+    <resultMap type="BusEquipmentDefinition" id="BusEquipmentDefinitionResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="type"    column="type"    />
+        <result property="serial"    column="serial"    />
+        <result property="communicationAgreementId"    column="communication_agreement_id"    />
+        <result property="selfId"    column="self_id"    />
+        <result property="agreementName"    column="agreement_name"    />
+        <result property="manufactor"    column="manufactor"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectBusEquipmentDefinitionVo">
+        select id, name, type, serial, communication_agreement_id, self_id, agreement_name, manufactor, status, create_by, create_time, update_by, update_time, remark from bus_equipment_definition
+    </sql>
+
+    <select id="selectBusEquipmentDefinitionList" parameterType="BusEquipmentDefinition" resultMap="BusEquipmentDefinitionResult">
+        <include refid="selectBusEquipmentDefinitionVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="serial != null  and serial != ''"> and serial = #{serial}</if>
+            <if test="communicationAgreementId != null  and communicationAgreementId != ''"> and communication_agreement_id = #{communicationAgreementId}</if>
+            <if test="selfId != null  and selfId != ''"> and self_id = #{selfId}</if>
+            <if test="agreementName != null  and agreementName != ''"> and agreement_name like concat('%', #{agreementName}, '%')</if>
+            <if test="manufactor != null  and manufactor != ''"> and manufactor = #{manufactor}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectBusEquipmentDefinitionById" parameterType="Long" resultMap="BusEquipmentDefinitionResult">
+        <include refid="selectBusEquipmentDefinitionVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBusEquipmentDefinition" parameterType="BusEquipmentDefinition" useGeneratedKeys="true" keyProperty="id">
+        insert into bus_equipment_definition
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="type != null">type,</if>
+            <if test="serial != null">serial,</if>
+            <if test="communicationAgreementId != null">communication_agreement_id,</if>
+            <if test="selfId != null">self_id,</if>
+            <if test="agreementName != null">agreement_name,</if>
+            <if test="manufactor != null">manufactor,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="type != null">#{type},</if>
+            <if test="serial != null">#{serial},</if>
+            <if test="communicationAgreementId != null">#{communicationAgreementId},</if>
+            <if test="selfId != null">#{selfId},</if>
+            <if test="agreementName != null">#{agreementName},</if>
+            <if test="manufactor != null">#{manufactor},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBusEquipmentDefinition" parameterType="BusEquipmentDefinition">
+        update bus_equipment_definition
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="serial != null">serial = #{serial},</if>
+            <if test="communicationAgreementId != null">communication_agreement_id = #{communicationAgreementId},</if>
+            <if test="selfId != null">self_id = #{selfId},</if>
+            <if test="agreementName != null">agreement_name = #{agreementName},</if>
+            <if test="manufactor != null">manufactor = #{manufactor},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBusEquipmentDefinitionById" parameterType="Long">
+        delete from bus_equipment_definition where id = #{id}
+    </delete>
+
+    <delete id="deleteBusEquipmentDefinitionByIds" parameterType="String">
+        delete from bus_equipment_definition where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

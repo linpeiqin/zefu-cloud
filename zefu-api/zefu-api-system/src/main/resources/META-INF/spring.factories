@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zefu.system.api.factory.RemoteUserFallbackFactory,\
+  com.zefu.system.api.factory.RemoteLogFallbackFactory, \
+  com.zefu.system.api.factory.RemoteFileFallbackFactory

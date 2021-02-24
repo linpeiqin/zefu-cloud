@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zefu.common.log.service.AsyncLogService,\
+  com.zefu.common.log.aspect.LogAspect
