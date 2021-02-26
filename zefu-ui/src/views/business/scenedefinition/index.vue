@@ -12,7 +12,12 @@
       </el-form-item>
       <el-form-item label="场景类型" prop="type">
         <el-select v-model="queryParams.type" placeholder="请选择场景类型" clearable size="small">
-          <el-option label="请选择字典生成" value=""/>
+          <el-option
+            v-for="dict in typeOptions"
+            :key="dict.dictValue"
+            :label="dict.dictLabel"
+            :value="dict.dictValue"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="状态" prop="status">
@@ -84,15 +89,11 @@
     <el-table v-loading="loading" :data="scenedefinitionList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="场景名称" align="center" prop="name"/>
-      <el-table-column label="场景类型" align="center" prop="type"/>
+      <el-table-column label="场景类型" align="center" prop="type" :formatter="typeFormat"/>
       <el-table-column label="主机地址" align="center" prop="macCode"/>
-      <el-table-column label="父场景" align="center" prop="parentId"/>
       <el-table-column label="主机IP" align="center" prop="masterIp"/>
-      <el-table-column label="关联场景" align="center" prop="relationId"/>
       <el-table-column label="场景地址" align="center" prop="address"/>
-      <el-table-column label="管理员" align="center" prop="adminName"/>
       <el-table-column label="状态" align="center" prop="status" :formatter="statusFormat"/>
-      <el-table-column label="备注" align="center" prop="remark"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -136,11 +137,11 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="场景类型" prop="type">
-<!--              <el-select v-model="form.type" placeholder="请选择下拉场景类型" clearable
+             <el-select v-model="form.type" placeholder="请选择下拉场景类型" clearable
                          :style="{width: '100%'}">
                 <el-option v-for="(item, index) in typeOptions" :key="index" :label="item.label"
                            :value="item.value" :disabled="item.disabled"></el-option>
-              </el-select>-->
+              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -241,6 +242,8 @@ export default {
       open: false,
       // 状态字典
       statusOptions: [],
+      // 类型字典
+      typeOptions: [],
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -267,6 +270,9 @@ export default {
     this.getDicts("sys_normal_disable").then(response => {
       this.statusOptions = response.data;
     });
+    this.getDicts("bus_scene_type").then(response => {
+      this.typeOptions = response.data;
+    });
   },
   methods: {
     /** 查询场景定义列表 */
@@ -278,9 +284,14 @@ export default {
         this.loading = false;
       });
     },
+
     // 状态字典翻译
     statusFormat(row, column) {
       return this.selectDictLabel(this.statusOptions, row.status);
+    },
+    // 场景类型字典翻译
+    typeFormat(row, column) {
+      return this.selectDictLabel(this.typeOptions, row.type);
     },
     // 取消按钮
     cancel() {
