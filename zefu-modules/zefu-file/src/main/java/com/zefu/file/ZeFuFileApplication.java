@@ -12,7 +12,6 @@ import com.zefu.common.swagger.annotation.EnableCustomSwagger2;
  * @author ruoyi|linking
  */
 @EnableCustomSwagger2
-@EnableDiscoveryClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class ZeFuFileApplication
 {
