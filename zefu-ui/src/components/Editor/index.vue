@@ -26,6 +26,11 @@ export default {
       type: Number,
       default: null,
     },
+    /* 只读 */
+    readOnly: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {

@@ -31,10 +31,10 @@
             <version>${dynamic-ds.version}</version>
         </dependency>
         
-        <!-- SpringBoot Seata -->
+        <!-- Springcloud Seata -->
         <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
 
     </dependencies>

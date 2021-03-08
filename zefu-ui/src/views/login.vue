@@ -67,8 +67,8 @@ export default {
       copyright:"",
       loginForm: {
         username: "admin",
-        password: "admin123",
-        rememberMe: false,
+        password: "123456",
+        rememberMe: true,
         code: "",
         uuid: ""
       },
