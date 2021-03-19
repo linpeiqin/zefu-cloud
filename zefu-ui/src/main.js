@@ -11,7 +11,8 @@ import store from './store'
 import router from './router'
 import permission from './directive/permission'
 import { download } from '@/utils/request'
-
+import global from '@/utils/global'
+Vue.use(global)
 import './assets/icons' // icon
 import './permission' // permission control
 import { getDicts } from "@/api/system/dict/data";
@@ -21,6 +22,12 @@ import Pagination from "@/components/Pagination";
 // 自定义表格工具扩展
 import RightToolbar from "@/components/RightToolbar"
 import BaiduMap from 'vue-baidu-map'
+import JsonViewer from 'vue-json-viewer'
+Vue.use(JsonViewer)
+import ByteTree from "@/views/business/product/tree/ByteTree";
+import ByteRetrieveTree from "@/views/business/product/tree/retrieve/ByteRetrieveTree";
+Vue.component('byte-tree', ByteTree)
+Vue.component('byte-retrieve-tree', ByteRetrieveTree)
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey

@@ -49,6 +49,9 @@ public class RedisService
         redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
     }
 
+    public String getHashMap(String key, String field) {
+      return this.getCacheMapValue( key, field );
+    }
     /**
      * 设置有效时间
      *
@@ -96,6 +99,10 @@ public class RedisService
         return redisTemplate.delete(key);
     }
 
+    public void addHashMapTime(String key, String field, String value,int timeOut) {
+        this.setCacheMapValue( key, field, value );
+        this.expire(key,timeOut);
+    }
     /**
      * 删除集合对象
      *
@@ -208,7 +215,9 @@ public class RedisService
         HashOperations<String, String, T> opsForHash = redisTemplate.opsForHash();
         return opsForHash.get(key, hKey);
     }
-
+    public void removeHashMap(String key, String identifier) {
+        redisTemplate.opsForHash().delete(key,identifier);
+    }
     /**
      * 获取多个Hash中的数据
      *
@@ -231,4 +240,6 @@ public class RedisService
     {
         return redisTemplate.keys(pattern);
     }
+
+
 }

@@ -6,6 +6,7 @@ import ${import};
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.zefu.common.core.annotation.Excel;
+import lombok.Data;
 #if($table.crud || $table.sub)
 import com.zefu.common.core.web.domain.BaseEntity;
 #elseif($table.tree)
@@ -23,6 +24,7 @@ import com.zefu.common.core.web.domain.TreeEntity;
 #elseif($table.tree)
 #set($Entity="TreeEntity")
 #end
+@Data
 public class ${ClassName} extends ${Entity}
 {
     private static final long serialVersionUID = 1L;
@@ -55,7 +57,7 @@ public class ${ClassName} extends ${Entity}
     private List<${subClassName}> ${subclassName}List;
 
 #end
-#foreach ($column in $columns)
+#*#foreach ($column in $columns)
 #if(!$table.isSuperColumn($column.javaField))
 #if($column.javaField.length() > 2 && $column.javaField.substring(1,2).matches("[A-Z]"))
 #set($AttrName=$column.javaField)
@@ -72,9 +74,8 @@ public class ${ClassName} extends ${Entity}
         return $column.javaField;
     }
 #end
-#end
-
-#if($table.sub)
+#end*#
+#*#if($table.sub)
     public List<${subClassName}> get${subClassName}List()
     {
         return ${subclassName}List;
@@ -84,8 +85,7 @@ public class ${ClassName} extends ${Entity}
     {
         this.${subclassName}List = ${subclassName}List;
     }
-
-#end
+#end*#
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)

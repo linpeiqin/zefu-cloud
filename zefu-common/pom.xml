@@ -12,6 +12,7 @@
         <module>zefu-common-log</module>
         <module>zefu-common-core</module>
         <module>zefu-common-redis</module>
+		<module>zefu-common-es</module>
         <module>zefu-common-swagger</module>
         <module>zefu-common-security</module>
         <module>zefu-common-datascope</module>

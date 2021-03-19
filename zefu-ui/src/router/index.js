@@ -118,6 +118,19 @@ export const constantRoutes = [
         meta: { title: '修改生成配置' }
       }
     ]
+  },
+  {
+    path: '/product',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'edit/:id(\\d+)',
+        component: (resolve) => require(['@/views/business/product/editTable'], resolve),
+        name: 'ProductEdit',
+        meta: { title: '编辑物模型' }
+      }
+    ]
   }
 ]
 

@@ -57,6 +57,7 @@ public class AjaxResult extends HashMap<String, Object>
             super.put(DATA_TAG, data);
         }
     }
+
     
     /**
      * 方便链式调用
@@ -91,6 +92,9 @@ public class AjaxResult extends HashMap<String, Object>
     {
         return AjaxResult.success("操作成功", data);
     }
+
+
+
 
     /**
      * 返回成功消息

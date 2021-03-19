@@ -123,7 +123,7 @@ public class FileUtils extends org.apache.commons.io.FileUtils
     public static boolean checkAllowDownload(String resource)
     {
         // 禁止目录上跳级别
-        if (StringUtils.contains(resource, ".."))
+        if (StringUtils.contains(resource, "src/main"))
         {
             return false;
         }
