@@ -1,0 +1,1157 @@
+11:45:55.607 [main] ERROR o.s.b.SpringApplication - [reportFailure,837] - Application run failed
+java.lang.IllegalStateException: Unable to read meta-data for class com.zefu.common.es.config.ElasticsearchConfig
+	at org.springframework.boot.autoconfigure.AutoConfigurationSorter$AutoConfigurationClass.getAnnotationMetadata(AutoConfigurationSorter.java:233)
+	at org.springframework.boot.autoconfigure.AutoConfigurationSorter$AutoConfigurationClass.getOrder(AutoConfigurationSorter.java:204)
+	at org.springframework.boot.autoconfigure.AutoConfigurationSorter$AutoConfigurationClass.access$000(AutoConfigurationSorter.java:150)
+	at org.springframework.boot.autoconfigure.AutoConfigurationSorter.lambda$getInPriorityOrder$0(AutoConfigurationSorter.java:63)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:360)
+	at java.util.TimSort.sort(TimSort.java:234)
+	at java.util.Arrays.sort(Arrays.java:1512)
+	at java.util.ArrayList.sort(ArrayList.java:1464)
+	at org.springframework.boot.autoconfigure.AutoConfigurationSorter.getInPriorityOrder(AutoConfigurationSorter.java:62)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector$AutoConfigurationGroup.sortAutoConfigurations(AutoConfigurationImportSelector.java:468)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector$AutoConfigurationGroup.selectImports(AutoConfigurationImportSelector.java:453)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorGrouping.getImports(ConfigurationClassParser.java:882)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorGroupingHandler.processGroupImports(ConfigurationClassParser.java:809)
+	at org.springframework.context.annotation.ConfigurationClassParser$DeferredImportSelectorHandler.process(ConfigurationClassParser.java:780)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:193)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:319)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:236)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:280)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:96)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:707)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:533)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:405)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.zefu.business.ZeFuBusinessApplication.main(ZeFuBusinessApplication.java:22)
+Caused by: java.io.FileNotFoundException: class path resource [com/zefu/common/es/config/ElasticsearchConfig.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:180)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:55)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:49)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:86)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:73)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81)
+	at org.springframework.boot.autoconfigure.AutoConfigurationSorter$AutoConfigurationClass.getAnnotationMetadata(AutoConfigurationSorter.java:229)
+	... 28 common frames omitted
+12:00:31.856 [http-nio-9204-exec-7] ERROR c.z.c.s.h.GlobalExceptionHandler - [handleException,51] - 
+### Error updating database.  Cause: java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+### The error may exist in file [E:\project\ZeFu-Cloud\zefu-modules\zefu-business\target\classes\mapper\business\BusProductFuncMapper.xml]
+### The error may involve com.zefu.business.mapper.BusProductFuncMapper.updateBusProductFunc
+### The error occurred while executing an update
+### SQL: update bus_product_func          SET func_status = ?,                                                                                                                                                                         update_time          where id = ?
+### Cause: java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?; nested exception is java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+org.springframework.jdbc.UncategorizedSQLException: 
+### Error updating database.  Cause: java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+### The error may exist in file [E:\project\ZeFu-Cloud\zefu-modules\zefu-business\target\classes\mapper\business\BusProductFuncMapper.xml]
+### The error may involve com.zefu.business.mapper.BusProductFuncMapper.updateBusProductFunc
+### The error occurred while executing an update
+### SQL: update bus_product_func          SET func_status = ?,                                                                                                                                                                         update_time          where id = ?
+### Cause: java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?; nested exception is java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:89)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:88)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:440)
+	at com.sun.proxy.$Proxy142.update(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.update(SqlSessionTemplate.java:287)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:67)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy143.updateBusProductFunc(Unknown Source)
+	at com.zefu.business.service.impl.BusProductFuncServiceImpl.updateFuncStatus(BusProductFuncServiceImpl.java:203)
+	at com.zefu.business.service.impl.BusProductFuncServiceImpl.releaseProp(BusProductFuncServiceImpl.java:147)
+	at com.zefu.business.controller.BusProductFuncController.propRelease(BusProductFuncController.java:121)
+	at com.zefu.business.controller.BusProductFuncController$$FastClassBySpringCGLIB$$7e304dba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.zefu.common.security.aspect.PreAuthorizeAspect.around(PreAuthorizeAspect.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterThrowingAdvice.invoke(AspectJAfterThrowingAdvice.java:62)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.zefu.business.controller.BusProductFuncController$$EnhancerBySpringCGLIB$$2456a967.propRelease(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: sql injection violation, dbType mysql, , druid-version 1.2.4, syntax error: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE : update bus_product_func
+         SET func_status = ?,
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            update_time 
+        where id = ?
+	at com.alibaba.druid.wall.WallFilter.checkInternal(WallFilter.java:849)
+	at com.alibaba.druid.wall.WallFilter.connection_prepareStatement(WallFilter.java:292)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_prepareStatement(FilterChainImpl.java:568)
+	at com.alibaba.druid.filter.FilterAdapter.connection_prepareStatement(FilterAdapter.java:930)
+	at com.alibaba.druid.filter.FilterEventAdapter.connection_prepareStatement(FilterEventAdapter.java:122)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_prepareStatement(FilterChainImpl.java:568)
+	at com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl.prepareStatement(ConnectionProxyImpl.java:341)
+	at com.alibaba.druid.pool.DruidPooledConnection.prepareStatement(DruidPooledConnection.java:351)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.instantiateStatement(PreparedStatementHandler.java:86)
+	at org.apache.ibatis.executor.statement.BaseStatementHandler.prepare(BaseStatementHandler.java:88)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.prepare(RoutingStatementHandler.java:59)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:87)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy212.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	... 90 common frames omitted
+Caused by: com.alibaba.druid.sql.parser.ParserException: syntax error, expect EQ, actual WHERE pos 248, line 16, column 10, token WHERE
+	at com.alibaba.druid.sql.parser.SQLExprParser.parseUpdateSetItem(SQLExprParser.java:2542)
+	at com.alibaba.druid.sql.dialect.mysql.parser.MySqlSelectParser.parseUpdateStatment(MySqlSelectParser.java:584)
+	at com.alibaba.druid.sql.dialect.mysql.parser.MySqlStatementParser.parseUpdateStatement(MySqlStatementParser.java:134)
+	at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:243)
+	at com.alibaba.druid.sql.parser.SQLStatementParser.parseStatementList(SQLStatementParser.java:124)
+	at com.alibaba.druid.wall.WallProvider.checkInternal(WallProvider.java:629)
+	at com.alibaba.druid.wall.WallProvider.check(WallProvider.java:583)
+	at com.alibaba.druid.wall.WallFilter.checkInternal(WallFilter.java:826)
+	... 116 common frames omitted
+12:00:32.275 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+12:00:32.275 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+12:00:32.274 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+12:00:41.839 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:40.622 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:40.856 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:41.124 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:51.222 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:54.336 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:57.931 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:52:58.358 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:07.995 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:08.399 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:11.220 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:11.627 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:17.272 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:17.714 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:43.033 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:44.363 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:53.166 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:53.290 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:56.896 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:53:57.298 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:54:05.286 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:54:06.199 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:54:12.763 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:54:13.020 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:54:15.926 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:54:16.322 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:57:05.710 [http-nio-9204-exec-4] ERROR c.z.c.s.h.GlobalExceptionHandler - [handleException,51] - Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "del"
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "del"
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:133)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.NumberFormatException: For input string: "del"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:589)
+	at java.lang.Long.valueOf(Long.java:803)
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:214)
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73)
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:53)
+	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:693)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125)
+	... 51 common frames omitted
+13:57:11.511 [task-9] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:57:11.924 [task-10] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+13:58:26.477 [task-11] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:22:50.845 [task-12] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:22:58.538 [task-13] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:23:01.264 [task-14] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:23:10.422 [task-15] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:23:14.111 [task-16] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:23:14.156 [task-17] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:23:15.148 [task-18] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:25:15.594 [task-19] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:25:15.863 [task-20] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:25:15.900 [task-21] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:25:27.374 [task-22] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:25:27.650 [task-23] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:25:27.696 [task-24] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:26:10.513 [task-25] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:26:26.934 [task-26] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:27:34.887 [task-27] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:27:34.991 [task-28] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:27:35.021 [task-29] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:28:13.013 [task-30] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:28:29.446 [task-31] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:28:39.844 [task-32] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:28:39.896 [task-33] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:28:39.951 [task-34] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:31:20.587 [task-35] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+14:31:29.338 [task-36] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:06:54.602 [task-37] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:07:17.037 [task-38] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:07:36.071 [task-39] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:07:36.093 [task-40] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:07:36.151 [task-41] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:08:36.882 [task-42] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:08:40.433 [task-43] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:08:49.014 [task-44] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:08:49.032 [task-45] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:08:49.122 [task-46] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:08:59.044 [task-47] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:09:13.134 [task-48] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:09:13.549 [task-49] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:09:20.453 [task-42] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:15:17.746 [task-50] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:15:33.979 [task-51] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:15:37.003 [task-52] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:15:40.282 [task-53] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:15:40.762 [task-54] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:04.742 [task-55] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:19.370 [task-56] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:19.585 [task-57] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:19.665 [task-58] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:20.737 [task-59] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:30.853 [task-60] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:31.272 [task-61] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:50.629 [task-62] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:54.375 [task-55] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:54.582 [task-56] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:54.634 [task-57] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:17:55.648 [task-58] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:18:04.427 [task-59] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:18:43.377 [task-63] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:18:43.814 [task-64] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:18:56.074 [task-62] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:43:59.853 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:43:59.981 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:44:00.119 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:44:03.719 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:44:10.960 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:44:11.444 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:46:59.944 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:58:32.659 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:58:33.726 [task-9] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:58:34.758 [task-10] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:59:53.936 [task-11] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+15:59:54.161 [task-12] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:00:01.237 [task-13] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:00:56.230 [task-15] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:00:56.231 [task-14] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:06.245 [task-16] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:36.119 [task-17] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:36.186 [task-18] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:36.195 [task-19] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:39.770 [task-20] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:40.203 [task-21] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:01:55.359 [task-15] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:17:23.986 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:17:23.986 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:17:23.987 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:17:27.945 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:22:43.285 [http-nio-9204-exec-2] ERROR druid.sql.Statement - [statementLogError,149] - {conn-10007, pstmt-20008} execute error. insert into bus_product_func
+         ( product_code,
+            func_name,
+            identifier,
+            func_type,
+            data_type,
+            
+            wr_type,
+            
+            func_desc,
+            
+            
+            attr,
+            
+            
+            
+            
+            
+            create_by,
+            
+            
+            createTime,
+            update_time ) 
+         values ( ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            
+            ?,
+            
+            ?,
+            
+            
+            ?,
+            
+            
+            
+            
+            
+            
+            
+            sysdate(),
+            sysdate() )
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3461)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3459)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:660)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3459)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3459)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy212.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	at com.sun.proxy.$Proxy142.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy143.insertBusProductFunc(Unknown Source)
+	at com.zefu.business.service.impl.BusProductFuncServiceImpl.insertBusProductFunc(BusProductFuncServiceImpl.java:86)
+	at com.zefu.business.controller.BusProductFuncController.add(BusProductFuncController.java:80)
+	at com.zefu.business.controller.BusProductFuncController$$FastClassBySpringCGLIB$$7e304dba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.zefu.common.security.aspect.PreAuthorizeAspect.around(PreAuthorizeAspect.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterThrowingAdvice.invoke(AspectJAfterThrowingAdvice.java:62)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.zefu.business.controller.BusProductFuncController$$EnhancerBySpringCGLIB$$4847db2e.add(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+16:22:43.500 [http-nio-9204-exec-2] ERROR c.z.c.s.h.GlobalExceptionHandler - [handleException,51] - 
+### Error updating database.  Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+### The error may exist in file [E:\project\ZeFu-Cloud\zefu-modules\zefu-business\target\classes\mapper\business\BusProductFuncMapper.xml]
+### The error may involve com.zefu.business.mapper.BusProductFuncMapper.insertBusProductFunc-Inline
+### The error occurred while setting parameters
+### SQL: insert into bus_product_func          ( product_code,             func_name,             identifier,             func_type,             data_type,                          wr_type,                          func_desc,                                       attr,                                                                              create_by,                                       createTime,             update_time )           values ( ?,             ?,             ?,             ?,             ?,                          ?,                          ?,                                       ?,                                                                                                        sysdate(),             sysdate() )
+### Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+; bad SQL grammar []; nested exception is java.sql.SQLException: Column count doesn't match value count at row 1
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+### The error may exist in file [E:\project\ZeFu-Cloud\zefu-modules\zefu-business\target\classes\mapper\business\BusProductFuncMapper.xml]
+### The error may involve com.zefu.business.mapper.BusProductFuncMapper.insertBusProductFunc-Inline
+### The error occurred while setting parameters
+### SQL: insert into bus_product_func          ( product_code,             func_name,             identifier,             func_type,             data_type,                          wr_type,                          func_desc,                                       attr,                                                                              create_by,                                       createTime,             update_time )           values ( ?,             ?,             ?,             ?,             ?,                          ?,                          ?,                                       ?,                                                                                                        sysdate(),             sysdate() )
+### Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+; bad SQL grammar []; nested exception is java.sql.SQLException: Column count doesn't match value count at row 1
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:101)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:88)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:440)
+	at com.sun.proxy.$Proxy142.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy143.insertBusProductFunc(Unknown Source)
+	at com.zefu.business.service.impl.BusProductFuncServiceImpl.insertBusProductFunc(BusProductFuncServiceImpl.java:86)
+	at com.zefu.business.controller.BusProductFuncController.add(BusProductFuncController.java:80)
+	at com.zefu.business.controller.BusProductFuncController$$FastClassBySpringCGLIB$$7e304dba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.zefu.common.security.aspect.PreAuthorizeAspect.around(PreAuthorizeAspect.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterThrowingAdvice.invoke(AspectJAfterThrowingAdvice.java:62)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.zefu.business.controller.BusProductFuncController$$EnhancerBySpringCGLIB$$4847db2e.add(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3461)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3459)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:660)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3459)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3459)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy212.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	... 89 common frames omitted
+16:22:44.124 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:22:48.069 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:22:53.495 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:27:08.537 [http-nio-9204-exec-5] ERROR c.z.c.s.h.GlobalExceptionHandler - [handleException,51] - nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_by' in 'class com.zefu.business.domain.BusProductFunc'
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_by' in 'class com.zefu.business.domain.BusProductFunc'
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:440)
+	at com.sun.proxy.$Proxy142.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy143.insertBusProductFunc(Unknown Source)
+	at com.zefu.business.service.impl.BusProductFuncServiceImpl.insertBusProductFunc(BusProductFuncServiceImpl.java:86)
+	at com.zefu.business.controller.BusProductFuncController.add(BusProductFuncController.java:80)
+	at com.zefu.business.controller.BusProductFuncController$$FastClassBySpringCGLIB$$7e304dba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.zefu.common.security.aspect.PreAuthorizeAspect.around(PreAuthorizeAspect.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterThrowingAdvice.invoke(AspectJAfterThrowingAdvice.java:62)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.zefu.business.controller.BusProductFuncController$$EnhancerBySpringCGLIB$$a44a9071.add(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_by' in 'class com.zefu.business.domain.BusProductFunc'
+	at org.apache.ibatis.reflection.Reflector.getGetInvoker(Reflector.java:374)
+	at org.apache.ibatis.reflection.MetaClass.getGetInvoker(MetaClass.java:164)
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.getBeanProperty(BeanWrapper.java:162)
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.get(BeanWrapper.java:49)
+	at org.apache.ibatis.reflection.MetaObject.getValue(MetaObject.java:122)
+	at org.apache.ibatis.scripting.defaults.DefaultParameterHandler.setParameters(DefaultParameterHandler.java:79)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.parameterize(PreparedStatementHandler.java:94)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.parameterize(RoutingStatementHandler.java:64)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:88)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy212.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	... 89 common frames omitted
+16:27:15.155 [http-nio-9204-exec-6] ERROR c.z.c.s.h.GlobalExceptionHandler - [handleException,51] - nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_by' in 'class com.zefu.business.domain.BusProductFunc'
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_by' in 'class com.zefu.business.domain.BusProductFunc'
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:440)
+	at com.sun.proxy.$Proxy142.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy143.insertBusProductFunc(Unknown Source)
+	at com.zefu.business.service.impl.BusProductFuncServiceImpl.insertBusProductFunc(BusProductFuncServiceImpl.java:86)
+	at com.zefu.business.controller.BusProductFuncController.add(BusProductFuncController.java:80)
+	at com.zefu.business.controller.BusProductFuncController$$FastClassBySpringCGLIB$$7e304dba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.zefu.common.security.aspect.PreAuthorizeAspect.around(PreAuthorizeAspect.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterThrowingAdvice.invoke(AspectJAfterThrowingAdvice.java:62)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:175)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.zefu.business.controller.BusProductFuncController$$EnhancerBySpringCGLIB$$a44a9071.add(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'create_by' in 'class com.zefu.business.domain.BusProductFunc'
+	at org.apache.ibatis.reflection.Reflector.getGetInvoker(Reflector.java:374)
+	at org.apache.ibatis.reflection.MetaClass.getGetInvoker(MetaClass.java:164)
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.getBeanProperty(BeanWrapper.java:162)
+	at org.apache.ibatis.reflection.wrapper.BeanWrapper.get(BeanWrapper.java:49)
+	at org.apache.ibatis.reflection.MetaObject.getValue(MetaObject.java:122)
+	at org.apache.ibatis.scripting.defaults.DefaultParameterHandler.setParameters(DefaultParameterHandler.java:79)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.parameterize(PreparedStatementHandler.java:94)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.parameterize(RoutingStatementHandler.java:64)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:88)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:49)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy212.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	... 89 common frames omitted
+16:27:19.223 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:27:25.159 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:36:45.775 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:36:45.775 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:36:50.188 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:37:11.247 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:37:11.403 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:38:16.137 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:38:16.384 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:38:43.803 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:38:44.201 [task-9] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:40:28.601 [task-10] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:40:29.404 [task-11] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:40:30.777 [task-12] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:40:31.189 [task-13] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:40:31.668 [task-14] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:40:32.468 [task-15] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:58:34.893 [task-16] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:58:34.902 [task-17] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:58:35.916 [task-18] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:58:36.560 [task-19] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+16:58:36.647 [task-20] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:00:41.123 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:00:41.329 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:00:45.477 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:00:55.910 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:00:56.119 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:08:30.193 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:08:30.234 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:08:30.380 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:08:33.490 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:08:33.634 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:09:08.743 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:09:09.119 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:09:37.615 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:21.824 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:21.825 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:21.958 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:53.071 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:53.378 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:53.432 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:58.073 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:58.393 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:15:58.412 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:05.544 [task-2] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:05.887 [task-3] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:10.898 [task-4] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:11.236 [task-5] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:12.630 [task-6] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:13.000 [task-7] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:14.668 [task-8] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:16:15.050 [task-1] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:17:42.200 [task-9] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:17:42.370 [task-10] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:17:42.448 [task-11] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:14.551 [task-12] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:15.115 [task-13] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:22.705 [task-14] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:23.126 [task-15] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:27.132 [task-16] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:34.027 [task-9] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:34.449 [task-10] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:41.896 [task-11] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:42.151 [task-12] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:47.763 [task-13] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:48.179 [task-14] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:51.686 [task-15] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:52.119 [task-16] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:57.715 [task-9] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:18:58.124 [task-10] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:19:00.558 [task-11] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:21:46.376 [task-17] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:21:46.525 [task-18] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:21:46.581 [task-19] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:21:52.293 [task-20] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:21:56.870 [task-21] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:01.094 [task-22] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:01.507 [task-23] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:08.167 [task-24] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:08.604 [task-17] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:17.185 [task-18] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:17.577 [task-19] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:22.062 [task-20] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:25.210 [task-21] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:31.220 [task-22] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:22:31.639 [task-23] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:23:22.414 [task-25] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:23:32.340 [task-26] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:23:55.719 [task-27] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:23:55.986 [task-28] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog
+17:23:56.064 [task-29] ERROR c.z.s.a.f.RemoteLogFallbackFactory - [create,24] - 日志服务调用失败:connect timed out executing POST http://zefu-system/operlog

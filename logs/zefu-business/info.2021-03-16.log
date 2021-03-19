@@ -1,0 +1,112 @@
+17:18:57.702 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
+17:18:59.215 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,212] - LOCAL_SNAPSHOT_PATH:C:\Users\linking\nacos\config
+17:18:59.262 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,54] - limitTime:5.0
+17:18:59.324 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,49] - isMultiInstance:false
+17:18:59.418 [main] INFO  c.z.b.ZeFuBusinessApplication - [logStartupProfileInfo,655] - The following profiles are active: dev
+17:19:03.193 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9204"]
+17:19:03.193 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+17:19:03.193 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.41]
+17:19:03.412 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+17:19:06.469 [main] INFO  c.a.d.p.DruidDataSource - [init,985] - {dataSource-1,master} inited
+17:19:06.469 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,132] - dynamic-datasource - load a datasource named [master] success
+17:19:06.469 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,237] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+17:19:07.374 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+17:19:07.826 [main] INFO  c.a.n.client.naming - [call,65] - initializer namespace from System Property :null
+17:19:07.826 [main] INFO  c.a.n.client.naming - [call,74] - initializer namespace from System Environment :null
+17:19:07.826 [main] INFO  c.a.n.client.naming - [call,84] - initializer namespace from System Property :null
+17:19:08.310 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+17:19:08.372 [main] INFO  c.n.c.s.URLConfigurationSource - [<init>,122] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+17:19:08.388 [main] INFO  c.n.c.s.URLConfigurationSource - [<init>,122] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+17:19:10.541 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9204"]
+17:19:10.588 [main] INFO  c.a.n.client.naming - [addBeatInfo,81] - [BEAT] adding beat: BeatInfo{port=9204, ip='192.168.1.110', weight=1.0, serviceName='DEFAULT_GROUP@@zefu-business', cluster='DEFAULT', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false} to beat map.
+17:19:10.588 [main] INFO  c.a.n.client.naming - [registerService,230] - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@zefu-business with instance: Instance{instanceId='null', ip='192.168.1.110', port=9204, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+17:19:10.603 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP zefu-business 192.168.1.110:9204 register finished
+17:19:10.790 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+17:19:10.806 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+17:19:10.884 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+17:19:11.087 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_1
+17:19:11.087 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: editUsingPUT_1
+17:19:11.087 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: exportUsingPOST_1
+17:19:11.102 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: getInfoUsingGET_1
+17:19:11.102 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_1
+17:19:11.102 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: removeUsingDELETE_1
+17:19:11.134 [main] INFO  c.z.b.ZeFuBusinessApplication - [logStarted,61] - Started ZeFuBusinessApplication in 14.575 seconds (JVM running for 17.311)
+17:19:11.149 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-business+DEFAULT_GROUP
+17:19:11.149 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-business, group=DEFAULT_GROUP, cnt=1
+17:19:11.149 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-business.yml+DEFAULT_GROUP
+17:19:11.149 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-business.yml, group=DEFAULT_GROUP, cnt=1
+17:19:11.149 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-business-dev.yml+DEFAULT_GROUP
+17:19:11.149 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-business-dev.yml, group=DEFAULT_GROUP, cnt=1
+17:19:11.624 [com.alibaba.nacos.client.naming.updater] INFO  c.a.n.client.naming - [processServiceJson,228] - new ips(1) service: DEFAULT_GROUP@@zefu-business@@DEFAULT -> [{"instanceId":"192.168.1.110#9204#DEFAULT#DEFAULT_GROUP@@zefu-business","ip":"192.168.1.110","port":9204,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:19:11.687 [com.alibaba.nacos.client.naming.updater] INFO  c.a.n.client.naming - [processServiceJson,267] - current ips:(1) service: DEFAULT_GROUP@@zefu-business@@DEFAULT -> [{"instanceId":"192.168.1.110#9204#DEFAULT#DEFAULT_GROUP@@zefu-business","ip":"192.168.1.110","port":9204,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:19:11.905 [RMI TCP Connection(3)-192.168.1.110] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:21:05.882 [task-1] INFO  c.n.c.ChainedDynamicProperty - [checkAndFlip,115] - Flipping property: zefu-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+17:21:05.900 [task-1] INFO  c.n.l.BaseLoadBalancer - [initWithConfig,197] - Client: zefu-system instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=zefu-system,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+17:21:05.907 [task-1] INFO  c.n.l.DynamicServerListLoadBalancer - [enableAndInitLearnNewServersFeature,222] - Using serverListUpdater PollingServerListUpdater
+17:21:05.935 [task-1] INFO  c.a.n.client.naming - [processServiceJson,228] - new ips(1) service: DEFAULT_GROUP@@zefu-system -> [{"instanceId":"192.168.1.109#9201#DEFAULT#DEFAULT_GROUP@@zefu-system","ip":"192.168.1.109","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:21:05.939 [task-1] INFO  c.a.n.client.naming - [processServiceJson,267] - current ips:(1) service: DEFAULT_GROUP@@zefu-system -> [{"instanceId":"192.168.1.109#9201#DEFAULT#DEFAULT_GROUP@@zefu-system","ip":"192.168.1.109","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:21:05.955 [task-1] INFO  c.n.c.ChainedDynamicProperty - [checkAndFlip,115] - Flipping property: zefu-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+17:21:05.957 [task-1] INFO  c.n.l.DynamicServerListLoadBalancer - [restOfInit,150] - DynamicServerListLoadBalancer for client zefu-system initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=zefu-system,current list of Servers=[192.168.1.109:9201],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.1.109:9201;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@144c6efc
+17:21:06.911 [PollingServerListUpdater-0] INFO  c.n.c.ChainedDynamicProperty - [checkAndFlip,115] - Flipping property: zefu-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+17:29:03.340 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
+17:29:04.697 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,212] - LOCAL_SNAPSHOT_PATH:C:\Users\linking\nacos\config
+17:29:04.729 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,54] - limitTime:5.0
+17:29:04.822 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,49] - isMultiInstance:false
+17:29:04.947 [main] INFO  c.z.b.ZeFuBusinessApplication - [logStartupProfileInfo,655] - The following profiles are active: dev
+17:29:09.081 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9204"]
+17:29:09.081 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+17:29:09.081 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.41]
+17:29:09.315 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+17:29:12.544 [main] INFO  c.a.d.p.DruidDataSource - [init,985] - {dataSource-1,master} inited
+17:29:12.544 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [addDataSource,132] - dynamic-datasource - load a datasource named [master] success
+17:29:12.544 [main] INFO  c.b.d.d.DynamicRoutingDataSource - [afterPropertiesSet,237] - dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+17:29:13.543 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+17:29:14.011 [main] INFO  c.a.n.client.naming - [call,65] - initializer namespace from System Property :null
+17:29:14.011 [main] INFO  c.a.n.client.naming - [call,74] - initializer namespace from System Environment :null
+17:29:14.011 [main] INFO  c.a.n.client.naming - [call,84] - initializer namespace from System Property :null
+17:29:14.557 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+17:29:14.619 [main] INFO  c.n.c.s.URLConfigurationSource - [<init>,122] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+17:29:14.635 [main] INFO  c.n.c.s.URLConfigurationSource - [<init>,122] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+17:29:16.912 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9204"]
+17:29:16.975 [main] INFO  c.a.n.client.naming - [addBeatInfo,81] - [BEAT] adding beat: BeatInfo{port=9204, ip='192.168.1.110', weight=1.0, serviceName='DEFAULT_GROUP@@zefu-business', cluster='DEFAULT', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false} to beat map.
+17:29:16.975 [main] INFO  c.a.n.client.naming - [registerService,230] - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@zefu-business with instance: Instance{instanceId='null', ip='192.168.1.110', port=9204, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+17:29:17.021 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP zefu-business 192.168.1.110:9204 register finished
+17:29:17.193 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+17:29:17.209 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+17:29:17.271 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+17:29:17.505 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_1
+17:29:17.521 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: editUsingPUT_1
+17:29:17.521 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: exportUsingPOST_1
+17:29:17.536 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: getInfoUsingGET_1
+17:29:17.536 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_1
+17:29:17.536 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: removeUsingDELETE_1
+17:29:17.583 [main] INFO  c.z.b.ZeFuBusinessApplication - [logStarted,61] - Started ZeFuBusinessApplication in 15.148 seconds (JVM running for 20.352)
+17:29:17.599 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-business+DEFAULT_GROUP
+17:29:17.599 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-business, group=DEFAULT_GROUP, cnt=1
+17:29:17.599 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-business.yml+DEFAULT_GROUP
+17:29:17.599 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-business.yml, group=DEFAULT_GROUP, cnt=1
+17:29:17.599 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-business-dev.yml+DEFAULT_GROUP
+17:29:17.599 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-business-dev.yml, group=DEFAULT_GROUP, cnt=1
+17:29:18.002 [com.alibaba.nacos.client.naming.updater] INFO  c.a.n.client.naming - [processServiceJson,228] - new ips(1) service: DEFAULT_GROUP@@zefu-business@@DEFAULT -> [{"instanceId":"192.168.1.110#9204#DEFAULT#DEFAULT_GROUP@@zefu-business","ip":"192.168.1.110","port":9204,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:29:18.017 [com.alibaba.nacos.client.naming.updater] INFO  c.a.n.client.naming - [processServiceJson,267] - current ips:(1) service: DEFAULT_GROUP@@zefu-business@@DEFAULT -> [{"instanceId":"192.168.1.110#9204#DEFAULT#DEFAULT_GROUP@@zefu-business","ip":"192.168.1.110","port":9204,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-business","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:29:18.127 [RMI TCP Connection(3)-192.168.1.110] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:30:02.897 [task-1] INFO  c.n.c.ChainedDynamicProperty - [checkAndFlip,115] - Flipping property: zefu-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+17:30:28.742 [task-1] INFO  c.n.l.BaseLoadBalancer - [initWithConfig,197] - Client: zefu-system instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=zefu-system,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+17:30:28.757 [task-1] INFO  c.n.l.DynamicServerListLoadBalancer - [enableAndInitLearnNewServersFeature,222] - Using serverListUpdater PollingServerListUpdater
+17:30:28.821 [task-1] INFO  c.a.n.client.naming - [processServiceJson,228] - new ips(1) service: DEFAULT_GROUP@@zefu-system -> [{"instanceId":"192.168.1.109#9201#DEFAULT#DEFAULT_GROUP@@zefu-system","ip":"192.168.1.109","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:30:28.821 [task-1] INFO  c.a.n.client.naming - [processServiceJson,267] - current ips:(1) service: DEFAULT_GROUP@@zefu-system -> [{"instanceId":"192.168.1.109#9201#DEFAULT#DEFAULT_GROUP@@zefu-system","ip":"192.168.1.109","port":9201,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-system","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+17:30:28.848 [task-1] INFO  c.n.c.ChainedDynamicProperty - [checkAndFlip,115] - Flipping property: zefu-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+17:30:28.851 [task-1] INFO  c.n.l.DynamicServerListLoadBalancer - [restOfInit,150] - DynamicServerListLoadBalancer for client zefu-system initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=zefu-system,current list of Servers=[192.168.1.109:9201],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.1.109:9201;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@2eb6f59a
+17:30:29.770 [PollingServerListUpdater-0] INFO  c.n.c.ChainedDynamicProperty - [checkAndFlip,115] - Flipping property: zefu-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+17:48:31.736 [Thread-71] INFO  c.n.l.PollingServerListUpdater - [run,53] - Shutting down the Executor Pool for PollingServerListUpdater
+17:48:32.012 [SpringContextShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,90] - De-registering from Nacos Server now...
+17:48:32.012 [SpringContextShutdownHook] INFO  c.a.n.client.naming - [removeBeatInfo,101] - [BEAT] removing beat: DEFAULT_GROUP@@zefu-business:192.168.1.110:9204 from beat map.
+17:48:32.013 [SpringContextShutdownHook] INFO  c.a.n.client.naming - [deregisterService,260] - [DEREGISTER-SERVICE] public deregistering service DEFAULT_GROUP@@zefu-business with instance: Instance{instanceId='null', ip='192.168.1.110', port=9204, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={}}
+17:48:32.027 [SpringContextShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - [deregister,110] - De-registration finished.
+17:48:32.028 [SpringContextShutdownHook] INFO  c.a.n.client.naming - [shutdown,147] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown begin
+17:48:32.187 [SpringContextShutdownHook] INFO  c.a.n.client.naming - [shutdown,149] - com.alibaba.nacos.client.naming.beat.BeatReactor do shutdown stop
+17:48:32.187 [SpringContextShutdownHook] INFO  c.a.n.client.naming - [shutdown,409] - com.alibaba.nacos.client.naming.core.HostReactor do shutdown begin

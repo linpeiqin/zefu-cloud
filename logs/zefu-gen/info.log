@@ -1,0 +1,37 @@
+16:14:45.256 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.1.6.Final
+16:14:46.919 [main] INFO  c.a.n.c.c.i.LocalConfigInfoProcessor - [<clinit>,212] - LOCAL_SNAPSHOT_PATH:C:\Users\linking\nacos\config
+16:14:46.989 [main] INFO  c.a.n.c.c.i.Limiter - [<clinit>,54] - limitTime:5.0
+16:14:47.074 [main] INFO  c.a.n.c.c.u.JvmUtil - [<clinit>,49] - isMultiInstance:false
+16:14:47.172 [main] INFO  c.z.g.ZeFuGenApplication - [logStartupProfileInfo,655] - The following profiles are active: dev
+16:14:52.370 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9202"]
+16:14:52.372 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+16:14:52.372 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.41]
+16:14:52.630 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+16:14:54.152 [main] INFO  c.a.c.s.SentinelWebAutoConfiguration - [addInterceptors,80] - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+16:14:54.995 [main] INFO  c.a.n.client.naming - [call,65] - initializer namespace from System Property :null
+16:14:54.996 [main] INFO  c.a.n.client.naming - [call,74] - initializer namespace from System Environment :null
+16:14:54.998 [main] INFO  c.a.n.client.naming - [call,84] - initializer namespace from System Property :null
+16:14:55.507 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+16:14:55.585 [main] INFO  c.n.c.s.URLConfigurationSource - [<init>,122] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+16:14:55.592 [main] INFO  c.n.c.s.URLConfigurationSource - [<init>,122] - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+16:14:57.806 [main] INFO  c.a.n.client.naming - [processServiceJson,228] - new ips(1) service: DEFAULT_GROUP@@zefu-gen@@DEFAULT -> [{"instanceId":"192.168.1.109#9202#DEFAULT#DEFAULT_GROUP@@zefu-gen","ip":"192.168.1.109","port":9202,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-gen","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+16:14:57.818 [main] INFO  c.a.n.client.naming - [processServiceJson,267] - current ips:(1) service: DEFAULT_GROUP@@zefu-gen@@DEFAULT -> [{"instanceId":"192.168.1.109#9202#DEFAULT#DEFAULT_GROUP@@zefu-gen","ip":"192.168.1.109","port":9202,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-gen","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+16:14:57.824 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9202"]
+16:14:58.156 [main] INFO  c.a.n.client.naming - [addBeatInfo,81] - [BEAT] adding beat: BeatInfo{port=9202, ip='192.168.1.110', weight=1.0, serviceName='DEFAULT_GROUP@@zefu-gen', cluster='DEFAULT', metadata={preserved.register.source=SPRING_CLOUD}, scheduled=false, period=5000, stopped=false} to beat map.
+16:14:58.158 [main] INFO  c.a.n.client.naming - [registerService,230] - [REGISTER-SERVICE] public registering service DEFAULT_GROUP@@zefu-gen with instance: Instance{instanceId='null', ip='192.168.1.110', port=9202, weight=1.0, healthy=true, enabled=true, ephemeral=true, clusterName='DEFAULT', serviceName='null', metadata={preserved.register.source=SPRING_CLOUD}}
+16:14:58.177 [main] INFO  c.a.c.n.r.NacosServiceRegistry - [register,75] - nacos registry, DEFAULT_GROUP zefu-gen 192.168.1.110:9202 register finished
+16:14:58.354 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+16:14:58.374 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+16:14:58.447 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+16:14:58.783 [main] INFO  c.z.g.ZeFuGenApplication - [logStarted,61] - Started ZeFuGenApplication in 14.873 seconds (JVM running for 17.114)
+16:14:58.797 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-gen.yml+DEFAULT_GROUP
+16:14:58.799 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-gen.yml, group=DEFAULT_GROUP, cnt=1
+16:14:58.800 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-gen+DEFAULT_GROUP
+16:14:58.800 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-gen, group=DEFAULT_GROUP, cnt=1
+16:14:58.802 [main] INFO  c.a.n.c.c.i.ClientWorker - [addCacheDataIfAbsent,239] - [fixed-106.53.125.170_8848] [subscribe] zefu-gen-dev.yml+DEFAULT_GROUP
+16:14:58.803 [main] INFO  c.a.n.c.c.i.CacheData - [addListener,93] - [fixed-106.53.125.170_8848] [add-listener] ok, tenant=, dataId=zefu-gen-dev.yml, group=DEFAULT_GROUP, cnt=1
+16:14:58.855 [com.alibaba.nacos.client.naming.updater] INFO  c.a.n.client.naming - [processServiceJson,228] - new ips(1) service: DEFAULT_GROUP@@zefu-gen@@DEFAULT -> [{"instanceId":"192.168.1.110#9202#DEFAULT#DEFAULT_GROUP@@zefu-gen","ip":"192.168.1.110","port":9202,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-gen","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+16:14:58.858 [com.alibaba.nacos.client.naming.updater] INFO  c.a.n.client.naming - [processServiceJson,267] - current ips:(2) service: DEFAULT_GROUP@@zefu-gen@@DEFAULT -> [{"instanceId":"192.168.1.109#9202#DEFAULT#DEFAULT_GROUP@@zefu-gen","ip":"192.168.1.109","port":9202,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-gen","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000},{"instanceId":"192.168.1.110#9202#DEFAULT#DEFAULT_GROUP@@zefu-gen","ip":"192.168.1.110","port":9202,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zefu-gen","metadata":{"preserved.register.source":"SPRING_CLOUD"},"ipDeleteTimeout":30000,"instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000}]
+16:14:59.314 [RMI TCP Connection(4)-192.168.1.110] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:14:59.386 [RMI TCP Connection(3)-192.168.1.110] INFO  c.z.h.HikariDataSource - [getConnection,110] - HikariPool-1 - Starting...
+16:15:00.071 [RMI TCP Connection(3)-192.168.1.110] INFO  c.z.h.HikariDataSource - [getConnection,123] - HikariPool-1 - Start completed.

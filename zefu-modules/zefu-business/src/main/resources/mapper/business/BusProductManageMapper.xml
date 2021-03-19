@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zefu.business.mapper.BusProductManageMapper">
+    
+    <resultMap type="BusProductManage" id="BusProductManageResult">
+        <result property="id"    column="id"    />
+        <result property="productCode"    column="product_code"    />
+        <result property="productName"    column="product_name"    />
+        <result property="transportList"    column="transport_list"    />
+        <result property="protocolCode"    column="protocol_code"    />
+        <result property="nodeType"    column="node_type"    />
+        <result property="productDesc"    column="product_desc"    />
+        <result property="logUrl"    column="log_url"    />
+        <result property="productStatus"    column="product_status"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectBusProductManageVo">
+        select id, product_code, product_name, transport_list, protocol_code, node_type, product_desc, log_url, product_status, status, create_by, create_time, update_by, update_time, remark from bus_product_manage
+    </sql>
+
+    <select id="selectBusProductManageList" parameterType="BusProductManage" resultMap="BusProductManageResult">
+        <include refid="selectBusProductManageVo"/>
+        <where>  
+            <if test="productCode != null  and productCode != ''"> and product_code = #{productCode}</if>
+            <if test="productName != null  and productName != ''"> and product_name like concat('%', #{productName}, '%')</if>
+            <if test="protocolCode != null  and protocolCode != ''"> and protocol_code = #{protocolCode}</if>
+            <if test="nodeType != null  and nodeType != ''"> and node_type = #{nodeType}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectBusProductManageById" parameterType="Long" resultMap="BusProductManageResult">
+        <include refid="selectBusProductManageVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBusProductManage" parameterType="BusProductManage" useGeneratedKeys="true" keyProperty="id">
+        insert into bus_product_manage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productCode != null and productCode != ''">product_code,</if>
+            <if test="productName != null and productName != ''">product_name,</if>
+            <if test="transportList != null">transport_list,</if>
+            <if test="protocolCode != null">protocol_code,</if>
+            <if test="nodeType != null and nodeType != ''">node_type,</if>
+            <if test="productDesc != null">product_desc,</if>
+            <if test="logUrl != null">log_url,</if>
+            <if test="productStatus != null">product_status,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productCode != null and productCode != ''">#{productCode},</if>
+            <if test="productName != null and productName != ''">#{productName},</if>
+            <if test="transportList != null">#{transportList},</if>
+            <if test="protocolCode != null">#{protocolCode},</if>
+            <if test="nodeType != null and nodeType != ''">#{nodeType},</if>
+            <if test="productDesc != null">#{productDesc},</if>
+            <if test="logUrl != null">#{logUrl},</if>
+            <if test="productStatus != null">#{productStatus},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBusProductManage" parameterType="BusProductManage">
+        update bus_product_manage
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="productCode != null and productCode != ''">product_code = #{productCode},</if>
+            <if test="productName != null and productName != ''">product_name = #{productName},</if>
+            <if test="transportList != null">transport_list = #{transportList},</if>
+            <if test="protocolCode != null">protocol_code = #{protocolCode},</if>
+            <if test="nodeType != null and nodeType != ''">node_type = #{nodeType},</if>
+            <if test="productDesc != null">product_desc = #{productDesc},</if>
+            <if test="logUrl != null">log_url = #{logUrl},</if>
+            <if test="productStatus != null">product_status = #{productStatus},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBusProductManageById" parameterType="Long">
+        delete from bus_product_manage where id = #{id}
+    </delete>
+
+    <delete id="deleteBusProductManageByIds" parameterType="String">
+        delete from bus_product_manage where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
