@@ -3,8 +3,9 @@ package com.zefu.business.cache.impl;
 
 import com.zefu.business.cache.IProductFuncCache;
 import com.zefu.business.domain.BusProductFunc;
-import com.zefu.common.core.constant.ComConstants;
-import com.zefu.common.core.utils.JSONProvider;
+
+import com.zefu.common.base.constants.Constants;
+import com.zefu.common.core.utils.bus.JSONProvider;
 import com.zefu.common.redis.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,8 +50,7 @@ public class ProductFuncCacheImpl implements IProductFuncCache {
             if (null == item) {
                 continue;
             }
-            String value = JSONProvider.toJSONString(item);
-            redisService.addHashMapTime(key, item.getIdentifier(), value, ComConstants.REDIS_DEF.GENERAL_EXPIRED);
+            redisService.addHashMapTime(key, item.getIdentifier(), item, Constants.REDIS_DEF.GENERAL_EXPIRED);
         }
     }
 
@@ -60,15 +60,14 @@ public class ProductFuncCacheImpl implements IProductFuncCache {
             return;
         }
         String key = this.buildModelKey(productCode, funcType);
-        redisService.addHashMapTime(key, po.getIdentifier(), JSONProvider.toJSONString(po),
-                ComConstants.REDIS_DEF.GENERAL_EXPIRED);
+        redisService.addHashMapTime(key, po.getIdentifier(),po,
+                Constants.REDIS_DEF.GENERAL_EXPIRED);
     }
 
     @Override
     public BusProductFunc getProperty(String productCode, String funcType, String identifier, Integer funcStatus) {
         String key = this.buildModelKey(productCode, funcType);
-        String value = redisService.getHashMap(key, identifier);
-        BusProductFunc po = JSONProvider.parseObject(value, BusProductFunc.class);
+        BusProductFunc po = redisService.getCacheMapValue(key, identifier);
         if (null == po) {
             return null;
         }
@@ -82,19 +81,18 @@ public class ProductFuncCacheImpl implements IProductFuncCache {
     public Map<String, BusProductFunc> getProperties(String productCode, String funcType, Integer funcStatus) {
         Map<String, BusProductFunc> resultMap = new HashMap<>();
         String key = this.buildModelKey(productCode, funcType);
-        Map<String, String> map = redisService.getCacheMap(key);
+        Map<String, BusProductFunc> map = redisService.getCacheMap(key);
         if (CollectionUtils.isEmpty(map)) {
             return resultMap;
         }
         map.forEach((filed, value) -> {
-            BusProductFunc po = JSONProvider.parseObject(value, BusProductFunc.class);
-            if (null != po) {
+            if (null != value) {
                 if (null != funcStatus) {
-                    if (funcStatus.equals(po.getFuncStatus())) {
-                        resultMap.put(filed, po);
+                    if (funcStatus.equals(value.getFuncStatus())) {
+                        resultMap.put(filed, value);
                     }
                 } else {
-                    resultMap.put(filed, po);
+                    resultMap.put(filed, value);
                 }
             }
         });
@@ -102,22 +100,21 @@ public class ProductFuncCacheImpl implements IProductFuncCache {
     }
 
     @Override
-    public List<BusProductFunc> getListProperties(String productCode, String funcType, Long funcStatus) {
+    public List<BusProductFunc> getListProperties(String productCode, String funcType, Integer funcStatus) {
         List<BusProductFunc> resultList = new ArrayList<>();
         String key = this.buildModelKey(productCode, funcType);
-        Map<String, String> map = redisService.getCacheMap(key);
+        Map<String, BusProductFunc> map = redisService.getCacheMap(key);
         if (CollectionUtils.isEmpty(map)) {
             return resultList;
         }
         map.forEach((filed, value) -> {
-            BusProductFunc po = JSONProvider.parseObject(value, BusProductFunc.class);
-            if (null != po) {
+            if (null != value) {
                 if (null != funcStatus) {
-                    if (funcStatus.equals(po.getFuncStatus())) {
-                        resultList.add(po);
+                    if (funcStatus.equals(value.getFuncStatus())) {
+                        resultList.add(value);
                     }
                 } else {
-                    resultList.add(po);
+                    resultList.add(value);
                 }
             }
         });
@@ -125,7 +122,7 @@ public class ProductFuncCacheImpl implements IProductFuncCache {
     }
 
     private final String buildModelKey(String productCode, String funcType) {
-        return ComConstants.REDIS_KEY.PRODUCT_FUNC + productCode + ":" + funcType;
+        return Constants.REDIS_KEY.PRODUCT_FUNC + productCode + ":" + funcType;
     }
 
 }

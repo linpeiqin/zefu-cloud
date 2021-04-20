@@ -70,5 +70,5 @@ public interface IProductFuncCache {
      * @param funcStatus 发布状态 null则查询所有
      * @return
      * */
-    List<BusProductFunc> getListProperties(String productCode, String funcType, Long funcStatus);
+    List<BusProductFunc> getListProperties(String productCode, String funcType, Integer funcStatus);
 }

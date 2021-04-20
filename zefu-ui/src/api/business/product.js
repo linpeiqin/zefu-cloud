@@ -169,3 +169,10 @@ export function propDetailSepcApi(productCode, identifier, funcType) {
     params: { productCode, identifier, funcType}
   })
 }
+export function productQueryApi(query) {
+  return request({
+    url: '/business/product/list',
+    method: 'get',
+    params: query
+  })
+}

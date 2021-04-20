@@ -2,6 +2,7 @@ package com.zefu.business.service;
 
 import java.util.List;
 import com.zefu.business.domain.BusProductManage;
+import com.zefu.common.base.domain.dto.response.ProtocolItemResDto;
 
 /**
  * 产品管理Service接口
@@ -60,4 +61,12 @@ public interface IBusProductManageService
     public int deleteBusProductManageById(Long id);
 
     public int updateProductStatus(BusProductManage busProductManage);
+    /**
+     * 根据产品编码查询产品详情
+     * @param code
+     * @return
+     * */
+    BusProductManage queryByCode(String code);
+
+    List<ProtocolItemResDto> listProtocol();
 }

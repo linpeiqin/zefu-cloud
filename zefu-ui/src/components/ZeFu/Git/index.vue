@@ -9,7 +9,7 @@ export default {
   name: 'ZeFuGit',
   data() {
     return {
-      url: 'https://gitee.com/y_project/ZeFu-Vue'
+      url: 'https://gitee.com/linking/ZeFu-Vue'
     }
   },
   methods: {

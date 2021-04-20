@@ -32,6 +32,9 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.zefu</groupId>
+            <artifactId>zefu-common-base</artifactId>
+        </dependency>
     </dependencies>
 </project>

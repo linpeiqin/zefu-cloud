@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zefu.business.mapper.BusDeviceManageMapper">
+    
+    <resultMap type="BusDeviceManage" id="BusDeviceManageResult">
+        <result property="id"    column="id"    />
+        <result property="deviceCode"    column="device_code"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="gwDevCode"    column="gw_dev_code"    />
+        <result property="productCode"    column="product_code"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="activeStatus"    column="active_status"    />
+        <result property="lastOnlineTime"    column="last_online_time"    />
+        <result property="deviceSecret"    column="device_secret"    />
+        <result property="firmwareVersion"    column="firmware_version"    />
+        <result property="devHost"    column="dev_host"    />
+        <result property="devPort"    column="dev_port"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="productName" column="product_name"  />
+        <result property="nodeType" column="node_type"  />
+    </resultMap>
+    <resultMap id="ProResultMap"  type="com.zefu.common.base.domain.dto.response.device.DevicePageResDto">
+        <result property="id"    column="id"    />
+        <result property="deviceCode"    column="device_code"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="gwDevCode"    column="gw_dev_code"    />
+        <result property="productCode"    column="product_code"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="activeStatus"    column="active_status"    />
+        <result property="lastOnlineTime"    column="last_online_time"    />
+        <result property="deviceSecret"    column="device_secret"    />
+        <result property="firmwareVersion"    column="firmware_version"    />
+        <result property="devHost"    column="dev_host"    />
+        <result property="devPort"    column="dev_port"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="productName" column="product_name" />
+        <result property="nodeType" column="node_type" />
+    </resultMap>
+    <select id="selectByCode" parameterType="java.lang.String" resultMap="ProResultMap">
+        select
+            td.*, tp.product_name, tp.node_type
+        from bus_device_manage td
+                 left join bus_product_manage tp on td.product_code = tp.product_code
+        where td.del_flag = 0
+          and td.device_code = #{deviceCode,jdbcType=VARCHAR}
+            limit 1
+    </select>
+    <sql id="selectBusDeviceManageVo">
+        select id, device_code, device_name, gw_dev_code, product_code, del_flag, active_status, last_online_time, device_secret, firmware_version, dev_host, dev_port, status, create_by, create_time, update_by, update_time, remark from bus_device_manage
+    </sql>
+
+    <select id="selectBusDeviceManageList" parameterType="BusDeviceManage" resultMap="BusDeviceManageResult">
+        <include refid="selectBusDeviceManageVo"/>
+        <where>  
+            <if test="deviceCode != null  and deviceCode != ''"> and device_code = #{deviceCode}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat('%', #{deviceName}, '%')</if>
+            <if test="gwDevCode != null  and gwDevCode != ''"> and gw_dev_code = #{gwDevCode}</if>
+            <if test="productCode != null  and productCode != ''"> and product_code = #{productCode}</if>
+            <if test="activeStatus != null "> and active_status = #{activeStatus}</if>
+            <if test="lastOnlineTime != null "> and last_online_time = #{lastOnlineTime}</if>
+            <if test="deviceSecret != null  and deviceSecret != ''"> and device_secret = #{deviceSecret}</if>
+            <if test="firmwareVersion != null  and firmwareVersion != ''"> and firmware_version = #{firmwareVersion}</if>
+            <if test="devHost != null  and devHost != ''"> and dev_host = #{devHost}</if>
+            <if test="devPort != null "> and dev_port = #{devPort}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectBusDeviceManageById" parameterType="Long" resultMap="BusDeviceManageResult">
+        <include refid="selectBusDeviceManageVo"/>
+        where id = #{id}
+    </select>
+    <select id="queryByPage" resultMap="ProResultMap">
+        select
+        td.*, tp.product_name, tp.node_type
+        from bus_device_manage td
+        left join bus_product_manage tp on td.product_code = tp.product_code
+        where td.del_flag = 0
+        <if test="item.deviceCode != null">
+            AND td.device_code like CONCAT(CONCAT('%',#{item.deviceCode},'%'))
+        </if>
+        <if test="item.deviceName != null">
+            AND td.device_name like CONCAT(CONCAT('%',#{item.deviceName},'%'))
+        </if>
+        <if test="item.gwDevCode != null">
+            AND td.gw_dev_code = #{item.gwDevCode,jdbcType=VARCHAR}
+        </if>
+        <if test="item.productCode != null">
+            AND td.product_code = #{item.productCode,jdbcType=VARCHAR}
+        </if>
+        <!--<if test="item.enableStatus != null">
+            AND td.enable_status = #{item.enableStatus,jdbcType=INTEGER}
+        </if>-->
+        <if test="item.activeStatus != null">
+            AND td.active_status = #{item.activeStatus,jdbcType=INTEGER}
+        </if>
+        <if test="item.nodeType != null">
+            AND tp.node_type = #{item.nodeType,jdbcType=VARCHAR}
+        </if>
+        order by id DESC
+        limit #{startId,jdbcType=INTEGER}, #{size,jdbcType=INTEGER}
+    </select>
+    <select id="countByPage" resultType="java.lang.Long">
+        select
+        count(td.id)
+        from bus_device_manage td
+        left join bus_product_manage tp on td.product_code = tp.product_code
+        where td.del_flag = 0
+        <if test="item.deviceCode != null">
+            AND td.device_code like CONCAT(CONCAT('%',#{item.deviceCode},'%'))
+        </if>
+        <if test="item.deviceName != null">
+            AND td.device_name like CONCAT(CONCAT('%',#{item.deviceName},'%'))
+        </if>
+        <if test="item.gwDevCode != null">
+            AND td.gw_dev_code = #{item.gwDevCode,jdbcType=VARCHAR}
+        </if>
+        <if test="item.productCode != null">
+            AND td.product_code = #{item.productCode,jdbcType=VARCHAR}
+        </if>
+        <!--<if test="item.enableStatus != null">
+            AND td.enable_status = #{item.enableStatus,jdbcType=INTEGER}
+        </if>-->
+        <if test="item.activeStatus != null">
+            AND td.active_status = #{item.activeStatus,jdbcType=INTEGER}
+        </if>
+        <if test="item.nodeType != null">
+            AND tp.node_type = #{item.nodeType,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insertBusDeviceManage" parameterType="BusDeviceManage" useGeneratedKeys="true" keyProperty="id">
+        insert into bus_device_manage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceCode != null">device_code,</if>
+            <if test="deviceName != null">device_name,</if>
+            <if test="gwDevCode != null">gw_dev_code,</if>
+            <if test="productCode != null">product_code,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="activeStatus != null">active_status,</if>
+            <if test="lastOnlineTime != null">last_online_time,</if>
+            <if test="deviceSecret != null">device_secret,</if>
+            <if test="firmwareVersion != null">firmware_version,</if>
+            <if test="devHost != null">dev_host,</if>
+            <if test="devPort != null">dev_port,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceCode != null">#{deviceCode},</if>
+            <if test="deviceName != null">#{deviceName},</if>
+            <if test="gwDevCode != null">#{gwDevCode},</if>
+            <if test="productCode != null">#{productCode},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="activeStatus != null">#{activeStatus},</if>
+            <if test="lastOnlineTime != null">#{lastOnlineTime},</if>
+            <if test="deviceSecret != null">#{deviceSecret},</if>
+            <if test="firmwareVersion != null">#{firmwareVersion},</if>
+            <if test="devHost != null">#{devHost},</if>
+            <if test="devPort != null">#{devPort},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBusDeviceManage" parameterType="BusDeviceManage">
+        update bus_device_manage
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="deviceCode != null">device_code = #{deviceCode},</if>
+            <if test="deviceName != null">device_name = #{deviceName},</if>
+            <if test="gwDevCode != null">gw_dev_code = #{gwDevCode},</if>
+            <if test="productCode != null">product_code = #{productCode},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="activeStatus != null">active_status = #{activeStatus},</if>
+            <if test="lastOnlineTime != null">last_online_time = #{lastOnlineTime},</if>
+            <if test="deviceSecret != null">device_secret = #{deviceSecret},</if>
+            <if test="firmwareVersion != null">firmware_version = #{firmwareVersion},</if>
+            <if test="devHost != null">dev_host = #{devHost},</if>
+            <if test="devPort != null">dev_port = #{devPort},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBusDeviceManageById" parameterType="Long">
+        delete from bus_device_manage where id = #{id}
+    </delete>
+
+    <delete id="deleteBusDeviceManageByIds" parameterType="String">
+        delete from bus_device_manage where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="mapGateway" >
+        update bus_device_manage
+        set  gw_dev_code =  #{gwDevCode, jdbcType=VARCHAR}
+        WHERE device_code IN
+        <foreach collection="devices" item="deviceCode" index="index" open="(" close=")" separator=",">
+            #{deviceCode, jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <update id="batchOnlineByCode" >
+        update bus_device_manage
+        set active_status = 1
+        WHERE device_code IN
+        <foreach collection="list" item="deviceCode" index="index" open="(" close=")" separator=",">
+            #{deviceCode}
+        </foreach>
+    </update>
+
+    <update id="batchOfflineByCode" >
+        update bus_device_manage
+        set active_status = 0
+        WHERE device_code IN
+        <foreach collection="list" item="deviceCode" index="index" open="(" close=")" separator=",">
+            #{deviceCode}
+        </foreach>
+    </update>
+</mapper>

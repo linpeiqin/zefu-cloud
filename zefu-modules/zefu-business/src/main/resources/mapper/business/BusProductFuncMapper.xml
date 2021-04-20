@@ -67,7 +67,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectBusProductFuncVo"/>
         where id = #{id}
     </select>
-        
+
+    <select id="selectBusProductFunc" parameterType="BusProductFunc" resultMap="BusProductFuncResult">
+        <include refid="selectBusProductFuncVo"/>
+        <where>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="productCode != null  and productCode != ''"> and product_code = #{productCode}</if>
+            <if test="funcName != null  and funcName != ''"> and func_name like concat('%', #{funcName}, '%')</if>
+            <if test="identifier != null  and identifier != ''"> and identifier = #{identifier}</if>
+            <if test="funcType != null  and funcType != ''"> and func_type = #{funcType}</if>
+            <if test="dataType != null  and dataType != ''"> and data_type = #{dataType}</if>
+            <if test="dataDefine != null  and dataDefine != ''"> and data_define = #{dataDefine}</if>
+            <if test="wrType != null "> and wr_type = #{wrType}</if>
+            <if test="funcStatus != null "> and func_status = #{funcStatus}</if>
+            <if test="funcDesc != null  and funcDesc != ''"> and func_desc = #{funcDesc}</if>
+            <if test="unit != null  and unit != ''"> and unit = #{unit}</if>
+            <if test="unitName != null  and unitName != ''"> and unit_name like concat('%', #{unitName}, '%')</if>
+            <if test="attr != null  and attr != ''"> and attr = #{attr}</if>
+            <if test="eventType != null  and eventType != ''"> and event_type = #{eventType}</if>
+            <if test="async != null "> and async = #{async}</if>
+            <if test="inputParam != null  and inputParam != ''"> and input_param = #{inputParam}</if>
+            <if test="outputParam != null  and outputParam != ''"> and output_param = #{outputParam}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+        </where>
+    </select>
     <insert id="insertBusProductFunc" parameterType="BusProductFunc" useGeneratedKeys="true" keyProperty="id">
         insert into bus_product_func
         <trim prefix="(" suffix=")" suffixOverrides=",">

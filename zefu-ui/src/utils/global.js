@@ -12,7 +12,7 @@ global.install = function(Vue) {
     return '错误类型'
   }
 
-  Vue.prototype.formatTimeBC = function(row, column, value) {
+  Vue.prototype.formatTime = function(row, column, value) {
     // eslint-disable-next-line eqeqeq
     if (value == '1980-01-01 00:00:00') {
       return '/'

@@ -2,14 +2,19 @@ package com.zefu.business.controller;
 
 import com.zefu.business.domain.BusProductFunc;
 import com.zefu.business.service.IBusProductFuncService;
-import com.zefu.business.domain.dto.request.prop.TemplateReqDto;
-import com.zefu.business.domain.dto.response.TemplateResDto;
-import com.zefu.common.core.exception.business.ProductFuncException;
-import com.zefu.common.core.utils.SecurityUtils;
+
+import com.zefu.common.base.domain.gateway.mq.DeviceActiveMqBo;
+import com.zefu.common.base.metadata.ProductFuncTypeEnum;
+import com.zefu.common.core.domain.R;
 import com.zefu.common.core.utils.poi.ExcelUtil;
 import com.zefu.common.core.web.controller.BaseController;
 import com.zefu.common.core.web.domain.AjaxResult;
 import com.zefu.common.core.web.page.TableDataInfo;
+import com.zefu.common.base.domain.dto.request.ProductFuncItemResDto;
+import com.zefu.common.base.domain.dto.request.prop.TemplateReqDto;
+import com.zefu.common.base.domain.dto.response.prop.TemplateResDto;
+import com.zefu.common.base.enums.ErrorEnum;
+import com.zefu.common.base.exception.GException;
 import com.zefu.common.log.annotation.Log;
 import com.zefu.common.log.enums.BusinessType;
 import com.zefu.common.security.annotation.PreAuthorize;
@@ -103,12 +108,12 @@ public class BusProductFuncController extends BaseController
     }
 
     @PreAuthorize(hasPermi = "business:func:edit")
-    @PostMapping(value = "template")
-    @Log(title = "产品功能", businessType = BusinessType.UPDATE)
+    @PostMapping(value = "/template")
+    @Log(title = "模板", businessType = BusinessType.UPDATE)
     public AjaxResult  template(@RequestBody TemplateReqDto reqDto){
         if(StringUtils.isEmpty(reqDto.getIdentifier()) && StringUtils.isEmpty(reqDto.getProductCode())){
             logger.warn("产品编码和标识符不能同时为空");
-            throw new ProductFuncException("产品编码和标识符不能同时为空");
+            throw GException.genException(ErrorEnum.INVALID_PARAM);
         }
         TemplateResDto resDto = busProductFuncService.template(reqDto);
         return   AjaxResult.success(resDto);
@@ -117,9 +122,39 @@ public class BusProductFuncController extends BaseController
 
     @PreAuthorize(hasPermi = "business:func:edit")
     @GetMapping(value = "/release")
-    @Log(title = "产品功能", businessType = BusinessType.UPDATE)
+    @Log(title = "发布", businessType = BusinessType.UPDATE)
     public AjaxResult  propRelease(Long id){
         busProductFuncService.releaseProp(id);
         return AjaxResult.success();
+    }
+
+    @PreAuthorize(hasPermi = "business:func:edit")
+    @GetMapping(value = "/detail/identifier")
+    @Log(title = "查询属性详情", businessType = BusinessType.OTHER)
+    public AjaxResult  propDetail(String productCode, String identifier, String funcType){
+        if(StringUtils.isEmpty(productCode) || StringUtils.isEmpty(identifier)){
+            throw GException.genException(ErrorEnum.INVALID_PARAM);
+        }
+        ProductFuncItemResDto result = busProductFuncService.listByProdIdType(productCode, identifier, funcType);
+        return AjaxResult.success(result);
+    }
+
+    @PostMapping(value = "/listFuncByProductCode")
+    public R<List<ProductFuncItemResDto>> listFuncByProductCode(String productCode, Integer funcStatus,
+                                                                ProductFuncTypeEnum typeEnum){
+        List<ProductFuncItemResDto> resDtos = this.busProductFuncService.listFuncByProductCode(productCode,funcStatus,typeEnum);
+        if (resDtos!=null){
+            return  R.ok(resDtos);
+        }
+        return R.fail();
+    }
+
+    @GetMapping(value = "/queryFunc")
+    public R<ProductFuncItemResDto> queryFunc(String productCode, ProductFuncTypeEnum funcType, String identifier){
+        ProductFuncItemResDto productFuncItemResDto = this.busProductFuncService.queryFunc(productCode,funcType,identifier);
+        if (productFuncItemResDto == null){
+            return R.fail();
+        }
+        return R.ok(productFuncItemResDto);
     }
 }

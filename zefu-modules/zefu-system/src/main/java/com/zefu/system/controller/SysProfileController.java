@@ -1,6 +1,8 @@
 package com.zefu.system.controller;
 
 import java.io.IOException;
+
+import com.zefu.common.core.constant.UserConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,6 +66,16 @@ public class SysProfileController extends BaseController
     @PutMapping
     public AjaxResult updateProfile(@RequestBody SysUser user)
     {
+        if (StringUtils.isNotEmpty(user.getPhonenumber())
+                && UserConstants.NOT_UNIQUE.equals(userService.checkPhoneUnique(user)))
+        {
+            return AjaxResult.error("修改用户'" + user.getUserName() + "'失败，手机号码已存在");
+        }
+        else if (StringUtils.isNotEmpty(user.getEmail())
+                && UserConstants.NOT_UNIQUE.equals(userService.checkEmailUnique(user)))
+        {
+            return AjaxResult.error("修改用户'" + user.getUserName() + "'失败，邮箱账号已存在");
+        }
         if (userService.updateUserProfile(user) > 0)
         {
             LoginUser loginUser = tokenService.getLoginUser();

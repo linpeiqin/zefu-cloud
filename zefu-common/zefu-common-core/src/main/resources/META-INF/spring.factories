@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.zefu.common.core.utils.SpringUtils
+  com.zefu.common.core.utils.SpringUtils,\
+ com.zefu.common.core.utils.bus.SpringContextUtil
 
   

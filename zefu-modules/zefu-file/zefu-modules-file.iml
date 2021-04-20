@@ -160,14 +160,14 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:5.2.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.2.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper-spring-boot-starter:1.3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.2.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.12.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.1.3" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.5" level="project" />
-    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.5" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.6" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:5.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:3.2" level="project" />
@@ -187,13 +187,14 @@
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-annotations:1.5.24" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.16" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.41" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.41" level="project" />
     <orderEntry type="module" module-name="zefu-common-swagger" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:2.3.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.41" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.41" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.2.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger2:2.9.2" level="project" />
@@ -201,5 +202,14 @@
     <orderEntry type="library" name="Maven: io.springfox:springfox-schema:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-common:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.2.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-boot-starter:2.0.8" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-boot-autoconfigure:2.0.8" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring:2.0.8" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-annotations:2.0.8" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-core:2.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.25.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: io.springfox:springfox-bean-validators:2.10.5" level="project" />
+    <orderEntry type="library" name="Maven: io.springfox:springfox-spring-webmvc:2.10.5" level="project" />
+    <orderEntry type="library" name="Maven: com.github.xiaoymin:knife4j-spring-ui:2.0.8" level="project" />
   </component>
 </module>

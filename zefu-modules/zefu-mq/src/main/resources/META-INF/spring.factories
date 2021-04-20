@@ -1,0 +1,11 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zefu.mq.consume.ActiveMqConsume,\
+  com.zefu.mq.consume.DeviceReplyConsume,\
+  com.zefu.mq.consume.DeviceUpConsume,\
+  com.zefu.mq.consume.PropertyReaderConsume,\
+  com.zefu.mq.consume.PropertySetConsume,\
+  com.zefu.mq.consume.ServiceInvokeConsume
+
+
+
+  

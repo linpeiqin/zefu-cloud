@@ -47,7 +47,12 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.fox.version}</version>
         </dependency>
-		
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+
         <!-- Mysql Connector -->
         <dependency>
             <groupId>mysql</groupId>
@@ -89,8 +94,18 @@
         <dependency>
             <groupId>com.zefu</groupId>
             <artifactId>zefu-common-es</artifactId>
-            <version>2.5.0</version>
-            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zefu</groupId>
+            <artifactId>zefu-common-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zefu</groupId>
+            <artifactId>zefu-common-storage</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zefu</groupId>
+            <artifactId>zefu-common-protocol</artifactId>
         </dependency>
     </dependencies>
 

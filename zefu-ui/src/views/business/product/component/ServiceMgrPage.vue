@@ -282,8 +282,6 @@ export default {
           this.editForm.input = this.processParam(retValue.inputParam)
           this.editForm.input.attrMap = this.processParam(retValue.inputParam)
         }
-
-
         this.dlgEditVisible = true
       })/** ajax end*/
     },

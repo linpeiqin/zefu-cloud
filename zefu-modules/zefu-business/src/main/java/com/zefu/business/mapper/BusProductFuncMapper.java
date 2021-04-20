@@ -59,4 +59,5 @@ public interface BusProductFuncMapper
      */
     public int deleteBusProductFuncByIds(Long[] ids);
 
+    BusProductFunc selectBusProductFunc(BusProductFunc query);
 }

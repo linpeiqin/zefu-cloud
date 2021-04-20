@@ -1,13 +1,22 @@
 package com.zefu.business.service.impl;
 
-import java.util.List;
+import com.zefu.business.domain.BusProductManage;
+import com.zefu.business.mapper.BusProductManageMapper;
+import com.zefu.business.service.IBusProductManageService;
+import com.zefu.common.base.biz.RedisKeyUtil;
+import com.zefu.common.base.constants.Constants;
+import com.zefu.common.base.domain.dto.response.ProtocolItemResDto;
+import com.zefu.common.base.enums.NetworkEnum;
 import com.zefu.common.core.utils.DateUtils;
 import com.zefu.common.core.utils.SecurityUtils;
+import com.zefu.common.protocol.service.IProtocolUtilService;
+import com.zefu.common.redis.service.RedisService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.zefu.business.mapper.BusProductManageMapper;
-import com.zefu.business.domain.BusProductManage;
-import com.zefu.business.service.IBusProductManageService;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 /**
  * 产品管理Service业务层处理
@@ -20,6 +29,10 @@ public class BusProductManageServiceImpl implements IBusProductManageService
 {
     @Autowired
     private BusProductManageMapper busProductManageMapper;
+    @Autowired
+    private RedisService cacheTemplate;
+    @Autowired
+    IProtocolUtilService protocolUtilService;
 
     /**
      * 查询产品管理
@@ -54,8 +67,13 @@ public class BusProductManageServiceImpl implements IBusProductManageService
     @Override
     public int insertBusProductManage(BusProductManage busProductManage)
     {
-    busProductManage.setCreateBy(SecurityUtils.getUsername());
+        busProductManage.setCreateBy(SecurityUtils.getUsername());
         busProductManage.setCreateTime(DateUtils.getNowDate());
+        String productCode = RandomStringUtils.randomAlphanumeric(16).toLowerCase();
+        if (busProductManage.getProductCode() == null){
+            busProductManage.setProductCode(productCode);
+        }
+        NetworkEnum.explainMust(busProductManage.getTransportList());
         return busProductManageMapper.insertBusProductManage(busProductManage);
     }
 
@@ -100,5 +118,29 @@ public class BusProductManageServiceImpl implements IBusProductManageService
     @Override
     public int updateProductStatus(BusProductManage busProductManage) {
         return busProductManageMapper.updateBusProductManage(busProductManage);
+    }
+
+    @Override
+    public BusProductManage queryByCode(String code) {
+        String key = RedisKeyUtil.buildProductInfoKey(code);
+        BusProductManage record = cacheTemplate.get(key, BusProductManage.class);
+        if(null != record){
+            return record;
+        }
+        BusProductManage query = new BusProductManage();
+        query.setProductStatus(1);
+        query.setDelFlag(0);
+        query.setProductCode(code);
+        List<BusProductManage> result = busProductManageMapper.selectBusProductManageList(query);
+
+        if(!CollectionUtils.isEmpty(result)){
+            cacheTemplate.set(key, result.get(0), Constants.REDIS_DEF.PRODUCT_INFO_EXPIRED);
+        }
+        return CollectionUtils.isEmpty(result) ? null : result.get(0);
+    }
+
+    @Override
+    public List<ProtocolItemResDto> listProtocol() {
+        return protocolUtilService.listProtocol();
     }
 }

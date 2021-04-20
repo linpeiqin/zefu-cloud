@@ -21,4 +21,8 @@ public class ServiceNameConstants
      * 文件服务的serviceid
      */
     public static final String FILE_SERVICE = "zefu-file";
+    /**
+     * 文件服务的serviceid
+     */
+    public static final String BUSINESS_SERVICE = "zefu-business";
 }

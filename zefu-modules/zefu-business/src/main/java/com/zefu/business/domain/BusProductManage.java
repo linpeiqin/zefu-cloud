@@ -49,13 +49,14 @@ public class BusProductManage extends BaseEntity
     private String logUrl;
 
     /** 0:草稿 1:发布 2:暂停 */
-    private Long productStatus;
+    private Integer productStatus;
 
     /** 状态 */
     @Excel(name = "状态")
     private String status;
 
-
+    /** 删除标识 */
+    private Integer delFlag;
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -74,6 +75,7 @@ public class BusProductManage extends BaseEntity
                 .append("updateBy", getUpdateBy())
                 .append("updateTime", getUpdateTime())
                 .append("remark", getRemark())
+                .append("delFlag",getDelFlag())
                 .toString();
     }
 }

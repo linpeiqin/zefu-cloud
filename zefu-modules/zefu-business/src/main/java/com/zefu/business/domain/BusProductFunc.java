@@ -52,11 +52,11 @@ public class BusProductFunc extends BaseEntity
 
     /** 0:只读 1:读写 */
     @Excel(name = "0:只读 1:读写")
-    private Long wrType;
+    private Integer wrType;
 
     /** 0:草稿 1:启用 */
     @Excel(name = "0:草稿 1:启用")
-    private Long funcStatus;
+    private Integer funcStatus;
 
     /** 描述 */
     @Excel(name = "描述")
@@ -80,7 +80,7 @@ public class BusProductFunc extends BaseEntity
 
     /** 默认异步(服务调用通知结果方式) */
     @Excel(name = "默认异步(服务调用通知结果方式)")
-    private Long async;
+    private Integer async;
 
     /** 服务输入参数 */
     @Excel(name = "服务输入参数")

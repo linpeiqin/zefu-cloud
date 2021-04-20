@@ -5,11 +5,15 @@ import java.util.List;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zefu.business.domain.dto.response.DataTypeItemResDto;
-import com.zefu.business.enums.MetaType;
-import com.zefu.business.enums.MetaUnit;
+
+import com.zefu.common.base.domain.dto.response.ProtocolItemResDto;
+import com.zefu.common.core.domain.R;
 import com.zefu.common.core.utils.SecurityUtils;
-import com.zefu.business.domain.bo.TopicDescBo;
+import com.zefu.common.base.domain.bo.TopicDescBo;
+import com.zefu.common.base.domain.dto.response.DataTypeItemResDto;
+import com.zefu.common.base.metadata.MetaType;
+import com.zefu.common.base.metadata.MetaUnit;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.zefu.common.log.annotation.Log;
@@ -101,6 +105,15 @@ public class BusProductManageController extends BaseController
         }
         return AjaxResult.success(result);
     }
+
+    @PreAuthorize(hasPermi = "business:product:query")
+    @GetMapping(value = "/protocols")
+    @Log(title = "获取支持协议列表",businessType = BusinessType.OTHER)
+    public AjaxResult protocols(){
+        List<ProtocolItemResDto> protocolItemResDtos = busProductManageService.listProtocol();
+        return AjaxResult.success(protocolItemResDtos);
+    }
+
     @PreAuthorize(hasPermi = "business:product:edit")
     @GetMapping(value = "/units")
     @Log(title = "获取计量单位列表",businessType = BusinessType.OTHER)
@@ -148,5 +161,11 @@ public class BusProductManageController extends BaseController
         list.add(TopicDescBo.build("调用设备服务", "down/设备编码/service/invoke", null));
         list.add(TopicDescBo.build("设备属性设置", "down/设备编码/property/set", "设备属性设置"));
         return AjaxResult.success(list);
+    }
+    @GetMapping("/queryProtocolCodeByCode")
+    public R<String> queryProtocolCodeByCode(String code){
+        String protocolCode = this.busProductManageService.queryByCode(code).getProtocolCode();
+        if (protocolCode == null) return R.fail();
+        return R.ok(protocolCode);
     }
 }

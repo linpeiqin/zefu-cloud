@@ -1,10 +1,11 @@
 package com.zefu.business.service;
 
 import com.zefu.business.domain.BusProductFunc;
-import com.zefu.business.domain.dto.request.ProductFuncItemResDto;
-import com.zefu.business.domain.dto.request.prop.TemplateReqDto;
-import com.zefu.business.domain.dto.response.TemplateResDto;
-import com.zefu.business.enums.ProductFuncTypeEnum;
+import com.zefu.common.base.domain.dto.request.ProductFuncItemResDto;
+import com.zefu.common.base.domain.dto.request.prop.TemplateReqDto;
+import com.zefu.common.base.domain.dto.response.prop.TemplateResDto;
+import com.zefu.common.base.metadata.ProductFuncTypeEnum;
+
 
 import java.util.List;
 
@@ -65,7 +66,7 @@ public interface IBusProductFuncService
      */
     public int deleteBusProductFuncById(Long id);
 
-    List<ProductFuncItemResDto> ListFuncByProductCode(String productCode, Long funcStatus,
+    List<ProductFuncItemResDto> listFuncByProductCode(String productCode, Integer funcStatus,
                                                       ProductFuncTypeEnum typeEnum);
 
     /**
@@ -80,4 +81,6 @@ public interface IBusProductFuncService
     public TemplateResDto template(TemplateReqDto reqDto);
 
     void releaseProp(Long id);
+
+    ProductFuncItemResDto listByProdIdType(String productCode, String identifier, String funcType);
 }

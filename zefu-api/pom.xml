@@ -10,6 +10,7 @@
 
     <modules>
         <module>zefu-api-system</module>
+		<module>zefu-api-business</module>
     </modules>
 
     <artifactId>zefu-api</artifactId>

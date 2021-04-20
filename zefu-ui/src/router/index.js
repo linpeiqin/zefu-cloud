@@ -131,6 +131,19 @@ export const constantRoutes = [
         meta: { title: '编辑物模型' }
       }
     ]
+  },
+  {
+    path: '/device',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'detail/:id(\\d+)',
+        component: (resolve) => require(['@/views/business/device/detail'], resolve),
+        name: 'DeviceDetail',
+        meta: { title: '设备详情' }
+      }
+    ]
   }
 ]
 

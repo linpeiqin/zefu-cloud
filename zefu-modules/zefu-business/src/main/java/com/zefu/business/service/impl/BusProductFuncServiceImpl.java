@@ -1,28 +1,28 @@
 package com.zefu.business.service.impl;
 
 import com.zefu.business.cache.IProductFuncCache;
-import com.zefu.business.convert.po2dto.ProductFucPoConvert;
+import com.zefu.business.po2dto.ProductFucPoConvert;
 import com.zefu.business.domain.BusProductFunc;
-import com.zefu.business.domain.bo.PropAttrBo;
-import com.zefu.business.enums.EventTypeEnum;
 import com.zefu.business.mapper.BusProductFuncMapper;
-import com.zefu.business.metadata.MetaDesc;
+import com.zefu.common.base.biz.EsUtil;
+import com.zefu.common.base.constants.Constants;
+import com.zefu.common.base.domain.bo.PropAttrBo;
+import com.zefu.common.base.domain.dto.request.ProductFuncItemResDto;
+import com.zefu.common.base.domain.dto.request.prop.TemplateReqDto;
+import com.zefu.common.base.domain.dto.response.prop.TemplateResDto;
+import com.zefu.common.base.enums.ErrorEnum;
+import com.zefu.common.base.exception.GException;
+import com.zefu.common.base.metadata.EventTypeEnum;
+import com.zefu.common.base.metadata.MetaDesc;
 import com.zefu.business.service.IBusProductFuncService;
-import com.zefu.business.service.IDataCenterService;
-import com.zefu.business.storage.EsMessage;
-import com.zefu.business.util.EsUtil;
-import com.zefu.common.core.constant.ComConstants;
-import com.zefu.common.core.enums.ErrorEnum;
-import com.zefu.business.enums.MetaType;
-import com.zefu.business.enums.ProductFuncTypeEnum;
-import com.zefu.business.domain.dto.request.ProductFuncItemResDto;
-import com.zefu.business.domain.dto.request.prop.TemplateReqDto;
-import com.zefu.business.domain.dto.response.TemplateResDto;
-import com.zefu.common.core.exception.business.ProductFuncException;
-import com.zefu.common.core.utils.JSONProvider;
+import com.zefu.common.base.domain.storage.EsMessage;
 import com.zefu.common.core.utils.SecurityUtils;
+import com.zefu.common.base.metadata.MetaType;
+import com.zefu.common.base.metadata.ProductFuncTypeEnum;
+import com.zefu.common.core.utils.bus.JSONProvider;
 import com.zefu.common.es.config.enums.EsMetaType;
 import com.zefu.common.es.domain.PropertiesItem;
+import com.zefu.common.storage.service.IDataCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -172,7 +172,7 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
             ProductFuncItemResDto item = this.queryFunc(reqDto.getProductCode(), funcTypeEnum, reqDto.getIdentifier());
             list.add(item);
         } else {
-            list = this.ListFuncByProductCode(reqDto.getProductCode(), 1L, funcTypeEnum);
+            list = this.listFuncByProductCode(reqDto.getProductCode(), 1, funcTypeEnum);
         }
         return this.processTemplate(list, funcTypeEnum);
     }
@@ -180,11 +180,11 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
     @Override
     public void releaseProp(Long propId) {
         if (null == propId) {
-            throw new ProductFuncException(ErrorEnum.INVALID_PARAM.getMsg());
+            throw GException.genException(ErrorEnum.INVALID_PARAM);
         }
         BusProductFunc po = busProductFuncMapper.selectBusProductFuncById(propId);
         if (null == po) {
-            throw new ProductFuncException(ErrorEnum.INVALID_PARAM.getMsg());
+            throw GException.genException(ErrorEnum.INVALID_PARAM);
         }
         ProductFuncTypeEnum funcTypeEnum = ProductFuncTypeEnum.explain(po.getFuncType());
         /** 创建上报模版 */
@@ -192,6 +192,16 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
         /** 创建属性设置模版 */
         /** 更新状态从草稿到已发布 */
         this.updateFuncStatus(po, funcTypeEnum);
+    }
+
+    @Override
+    public ProductFuncItemResDto listByProdIdType(String productCode, String identifier, String funcType) {
+        BusProductFunc query = new BusProductFunc();
+        query.setProductCode(productCode);
+        query.setIdentifier(identifier);
+        query.setFuncType(funcType);
+        BusProductFunc record = busProductFuncMapper.selectBusProductFunc(query);
+        return ProductFucPoConvert.item(record);
     }
 
     /**
@@ -232,11 +242,11 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
             }
         }
 
-        dataCenterService.createIndexTemplate(tempName, aliases, ComConstants.ES.HEADER_DEVICE, uploadPatterns,
+        dataCenterService.createIndexTemplate(tempName, aliases, Constants.ES.HEADER_DEVICE, uploadPatterns,
                 propertiesMap);
         if (ProductFuncTypeEnum.PROP.equals(funcTypeEnum)) {
             /** 是属性的话，因为属性会面临设置，所以单独再给他设置个模版 */
-            dataCenterService.createIndexTemplate(setTempName, setAliases, ComConstants.ES.HEADER_DEVICE, setPatterns,
+            dataCenterService.createIndexTemplate(setTempName, setAliases, Constants.ES.HEADER_DEVICE, setPatterns,
                     propertiesMap);
         }
 
@@ -244,7 +254,7 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
 
     private void updateFuncStatus(BusProductFunc source, ProductFuncTypeEnum funcTypeEnum) {
         BusProductFunc update = new BusProductFunc();
-        update.setFuncStatus(1L);
+        update.setFuncStatus(1);
         update.setId(source.getId());
         busProductFuncMapper.updateBusProductFunc(update);
         productFuncCache.remove(source.getProductCode(), source.getFuncType());
@@ -333,7 +343,7 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
     }
 
     @Override
-    public List<ProductFuncItemResDto> ListFuncByProductCode(String productCode, Long funcStatus,
+    public List<ProductFuncItemResDto> listFuncByProductCode(String productCode, Integer funcStatus,
                                                              ProductFuncTypeEnum typeEnum) {
         List<ProductFuncItemResDto> resultList = new ArrayList<>();
         if (StringUtils.isEmpty(productCode)) {
@@ -369,7 +379,7 @@ public class BusProductFuncServiceImpl implements IBusProductFuncService {
         if (null != typeEnum) {
             queryDo.setFuncType(typeEnum.getType());
         }
-        queryDo.setFuncStatus(1L);
+        queryDo.setFuncStatus(1);
         queryDo.setIdentifier(identifier);
         List<BusProductFunc> list = busProductFuncMapper.selectBusProductFuncList(queryDo);
         if (!CollectionUtils.isEmpty(list)) {

@@ -28,6 +28,8 @@ import ByteTree from "@/views/business/product/tree/ByteTree";
 import ByteRetrieveTree from "@/views/business/product/tree/retrieve/ByteRetrieveTree";
 Vue.component('byte-tree', ByteTree)
 Vue.component('byte-retrieve-tree', ByteRetrieveTree)
+import md5 from 'js-md5'
+Vue.prototype.$md5 = md5
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey

@@ -160,27 +160,34 @@
       <el-row :gutter="15">
 
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-col :span="12">
-        <el-form-item label="产品编码" prop="productCode">
-          <el-input v-model="form.productCode" placeholder="请输入产品编码" />
-        </el-form-item>
-        </el-col>
-        <el-col :span="12">
+        <el-col :span="24">
         <el-form-item label="产品名称" prop="productName">
           <el-input v-model="form.productName" placeholder="请输入产品名称" />
         </el-form-item>
         </el-col>
         <el-col :span="12">
         <el-form-item label="传输协议" prop="transportList">
-          <el-input v-model="form.transportList" placeholder="请输入传输协议" />
+          <el-radio-group v-model="form.transportList">
+            <el-radio label="MQTT" />
+            <!-- <el-checkbox label="TCP" /> -->
+            <el-radio label="UDP" />
+            <!-- <el-checkbox label="HTTP" /> -->
+          </el-radio-group>
         </el-form-item>
         </el-col>
         <el-col :span="12">
-        <el-form-item label="消息协议" prop="protocolCode">
-          <el-input v-model="form.protocolCode" placeholder="请输入消息协议" />
+        <el-form-item label="数据协议" prop="protocolCode">
+          <el-select v-model="form.protocolCode" placeholder="请选择">
+            <el-option
+              v-for="item in protocols"
+              :key="item.code"
+              :label="item.name"
+              :value="item.code"
+            />
+          </el-select>
         </el-form-item>
         </el-col>
-        <el-col :span="24">
+        <el-col :span="12">
         <el-form-item label="节点类型">
           <el-radio-group v-model="form.nodeType">
             <el-radio
@@ -191,31 +198,31 @@
           </el-radio-group>
         </el-form-item>
         </el-col>
+        <el-col :span="12">
+          <el-form-item label="图标" >
+            <el-popover
+              placement="bottom-start"
+              width="460"
+              trigger="click"
+              @show="$refs['iconSelect'].reset()"
+            >
+              <IconSelect ref="iconSelect" @selected="selected" />
+              <el-input slot="reference" v-model="form.logUrl" placeholder="点击选择图标" readonly>
+                <svg-icon
+                  v-if="form.logUrl"
+                  slot="prefix"
+                  :icon-class="form.logUrl"
+                  class="el-input__icon"
+                  style="height: 32px;width: 16px;"
+                />
+                <i v-else slot="prefix" class="el-icon-search el-input__icon" />
+              </el-input>
+            </el-popover>
+          </el-form-item>
+        </el-col>
         <el-col :span="24">
         <el-form-item label="描述" prop="productDesc">
           <el-input v-model="form.productDesc" placeholder="请输入描述" />
-        </el-form-item>
-        </el-col>
-        <el-col :span="12">
-        <el-form-item label="图标" >
-          <el-popover
-            placement="bottom-start"
-            width="460"
-            trigger="click"
-            @show="$refs['iconSelect'].reset()"
-          >
-            <IconSelect ref="iconSelect" @selected="selected" />
-            <el-input slot="reference" v-model="form.logUrl" placeholder="点击选择图标" readonly>
-              <svg-icon
-                v-if="form.logUrl"
-                slot="prefix"
-                :icon-class="form.logUrl"
-                class="el-input__icon"
-                style="height: 32px;width: 16px;"
-              />
-              <i v-else slot="prefix" class="el-icon-search el-input__icon" />
-            </el-input>
-          </el-popover>
         </el-form-item>
         </el-col>
         <el-col :span="12">
@@ -229,11 +236,6 @@
           </el-radio-group>
         </el-form-item>
         </el-col>
-        <el-col :span="24">
-        <el-form-item label="备注信息" prop="remark">
-          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
-        </el-form-item>
-        </el-col>
       </el-form>
       </el-row>
         <div slot="footer" class="dialog-footer">
@@ -245,7 +247,7 @@
 </template>
 
 <script>
-import { listProduct, getProduct, delProduct, addProduct, updateProduct, changeProductStatus } from "@/api/business/product";
+import { listProduct, getProduct, delProduct, addProduct, updateProduct, changeProductStatus,protocolListApi } from "@/api/business/product";
 import IconSelect from "@/components/IconSelect";
 export default {
   name: "Product",
@@ -278,6 +280,8 @@ export default {
       nodeTypeOptions: [],
       // 状态字典
       statusOptions: [],
+      //协议列表
+      protocols: [],
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -292,12 +296,11 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        productCode: [
-          { required: true, message: "产品编码不能为空", trigger: "blur" }
-        ],
+        transportList: [{ required: true, message: '传输协议', trigger: 'change' }],
         productName: [
           { required: true, message: "产品名称不能为空", trigger: "blur" }
         ],
+        productDesc: [{ required: true, max: 160, message: '请输入产品描述', trigger: 'blur' }],
         nodeType: [
           { required: true, message: "节点类型不能为空", trigger: "blur" }
         ],
@@ -312,6 +315,7 @@ export default {
     this.getDicts("sys_normal_disable").then(response => {
       this.statusOptions = response.data;
     });
+    this.getData();
   },
   activated() {
     const time = this.$route.query.t;
@@ -321,6 +325,13 @@ export default {
     }
   },
   methods: {
+    getData() {
+      protocolListApi({}).then(data => {
+        const retValue = data.data
+        console.log(retValue)
+        this.protocols = retValue
+      })
+    },
     // 选择图标
     selected(name) {
       this.form.logUrl = name;

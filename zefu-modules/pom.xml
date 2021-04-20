@@ -14,7 +14,7 @@
         <module>zefu-gen</module>
         <module>zefu-job</module>
         <module>zefu-file</module>
-	
+		<module>zefu-mq</module>
     </modules>
 
     <artifactId>zefu-modules</artifactId>

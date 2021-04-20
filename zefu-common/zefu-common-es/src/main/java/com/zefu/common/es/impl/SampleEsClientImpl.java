@@ -3,7 +3,7 @@ package com.zefu.common.es.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-import com.zefu.common.core.utils.JSONProvider;
+import com.zefu.common.core.utils.bus.JSONProvider;
 import com.zefu.common.es.SampleEsClient;
 import com.zefu.common.es.config.enums.EsMetaType;
 import com.zefu.common.es.config.enums.KeyMatchTypeEnum;

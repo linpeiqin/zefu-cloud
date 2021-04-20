@@ -17,6 +17,9 @@
         <module>zefu-common-security</module>
         <module>zefu-common-datascope</module>
 		<module>zefu-common-datasource</module>
+		<module>zefu-common-base</module>
+		<module>zefu-common-protocol</module>
+		<module>zefu-common-storage</module>
     </modules>
 
     <artifactId>zefu-common</artifactId>
