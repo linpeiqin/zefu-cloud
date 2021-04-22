@@ -136,13 +136,15 @@ export default {
       this.tableData = [];
       if('up' == this.activeName){
           deviceRtListApi(this.query).then((data) => {
-            this.tableData = data.rows;
-            this.total = data.total;
+            const retValue = data.data;
+            this.tableData = retValue.resultData;
+            this.total = retValue.total;
           });
       }else if('down' == this.activeName){
           deviceSetListApi(this.query).then((data) => {
-            this.tableData = data.rows;
-            this.total = data.total;
+            const retValue = data.data;
+            this.tableData = retValue.resultData;
+            this.total = retValue.total;
           });
       }
 
@@ -210,6 +212,7 @@ export default {
       this.query.paramData.dataType = dataType;
       this.activeName = 'up'
       deviceRtListApi(this.query).then((data) => {
+        const retValue = data.data;
         const { msg, code } = data;
         if (code !== 200) {
           this.$notify.error({
@@ -217,8 +220,8 @@ export default {
             message: msg,
           });
         } else {
-          this.tableData = data.rows;
-          this.total = data.total;
+          this.tableData = retValue.resultData;
+          this.total = retValue.total;
         }
       });
     },

@@ -32,6 +32,7 @@ import com.zefu.common.core.utils.bus.IdGenerate;
 import com.zefu.common.log.annotation.Log;
 import com.zefu.common.log.enums.BusinessType;
 import com.zefu.common.security.annotation.PreAuthorize;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -68,6 +69,14 @@ public class BusDeviceManageController extends BaseController
         startPage();
         List<BusDeviceManage> list = busDeviceManageService.selectBusDeviceManageList(busDeviceManage);
         return getDataTable(list);
+    }
+
+    @PreAuthorize(hasPermi = "business:device:list")
+    @PostMapping("/search")
+    @Log(title = "分页查询设备列表", businessType = BusinessType.OTHER)
+    public AjaxResult search(@RequestBody PageReqDto<DevQueryReqDto> searchPage) {
+        PageResDto<DevicePageResDto> resDto = busDeviceManageService.queryByPage(searchPage);
+        return AjaxResult.success(resDto);
     }
 
     /**
@@ -163,17 +172,17 @@ public class BusDeviceManageController extends BaseController
     @PreAuthorize(hasPermi = "business:device:query")
     @PostMapping(value = "/runtime/item")
     @Log(title = "查看设备具体属性运行详情列表", businessType = BusinessType.OTHER)
-    public TableDataInfo rtItem(@RequestBody PageReqDto<DeviceRtItemReqDto> searchPage) {
-        List<DeviceRtHistoryResDto> list = busDeviceManageService.searchRtItem(searchPage);
-        return getDataTable(list);
+    public AjaxResult rtItem(@RequestBody PageReqDto<DeviceRtItemReqDto> searchPage) {
+        PageResDto<DeviceRtHistoryResDto> pageResult = busDeviceManageService.searchRtItem(searchPage);
+        return AjaxResult.success(pageResult);
     }
     @PreAuthorize(hasPermi = "business:device:query")
     @PostMapping(value = "/set/item")
     @Log(title = "查看设备属性设置历史", businessType = BusinessType.OTHER)
-    public TableDataInfo
+    public AjaxResult
     setItem(@RequestBody PageReqDto<DeviceRtItemReqDto> searchPage) {
-        List<DeviceRtHistoryResDto> pageResult = busDeviceManageService.searchSetItem(searchPage);
-        return getDataTable(pageResult);
+        PageResDto<DeviceRtHistoryResDto> pageResult = busDeviceManageService.searchSetItem(searchPage);
+        return AjaxResult.success(pageResult);
     }
    @PreAuthorize(hasPermi = "business:device:query")
    @PostMapping(value = "/property/set")

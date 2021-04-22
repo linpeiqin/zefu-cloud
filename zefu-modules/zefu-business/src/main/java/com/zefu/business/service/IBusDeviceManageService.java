@@ -77,14 +77,13 @@ public interface IBusDeviceManageService
 
     List<DeviceRtResDto> queryRtByDevCode(String deviceCode, String productCode, ProductFuncTypeEnum productFuncTypeEnum);
 
-    List<DeviceRtHistoryResDto> searchRtItem(PageReqDto<DeviceRtItemReqDto> searchPage);
+    PageResDto<DeviceRtHistoryResDto> searchRtItem(PageReqDto<DeviceRtItemReqDto> searchPage);
 
     void send(String key,Object bo);
 
-    List<DeviceRtHistoryResDto> searchSetItem(PageReqDto<DeviceRtItemReqDto> searchPage);
+    PageResDto<DeviceRtHistoryResDto> searchSetItem(PageReqDto<DeviceRtItemReqDto> searchPage);
 
     PageResDto<DevicePageResDto> queryByPage(PageReqDto<DevQueryReqDto> searchPage);
-
     long countByGwDevice(String deviceCode, DeviceStateEnum total);
 
     DevicePageResDto queryByDevCode(String gwDeviceCode);

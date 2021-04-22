@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="query" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="设备编码" prop="deviceCode">
         <el-input
-          v-model="queryParams.deviceCode"
+          v-model="query.deviceCode"
           placeholder="请输入设备编码"
           clearable
           size="small"
@@ -12,7 +12,7 @@
       </el-form-item>
       <el-form-item label="设备名称" prop="deviceName">
         <el-input
-          v-model="queryParams.deviceName"
+          v-model="query.deviceName"
           placeholder="请输入设备名称"
           clearable
           size="small"
@@ -20,16 +20,26 @@
         />
       </el-form-item>
       <el-form-item label="产品编码" prop="productCode">
-        <el-input
-          v-model="queryParams.productCode"
-          placeholder="请输入所属的产品编码"
+        <el-select
+          v-model="query.productCode"
           clearable
-          size="small"
-          @keyup.enter.native="handleQuery"
-        />
+          placeholder="请选择产品"
+        >
+          <el-option
+            v-for="item in productList"
+            :key="item.productCode"
+            :label="item.productName"
+            :value="item.productCode"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item label="在线状态" prop="activeStatus">
-        <el-select v-model="queryParams.activeStatus" placeholder="请选择0:离线 1:在线" clearable size="small">
+        <el-select v-model="query.activeStatus" placeholder="请选择0:离线 1:在线" clearable size="small">
+          <el-option label="请选择字典生成" value=""/>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="节点类型" prop="nodeType">
+        <el-select v-model="query.nodeType"  clearable size="small">
           <el-option label="请选择字典生成" value=""/>
         </el-select>
       </el-form-item>
@@ -88,6 +98,7 @@
       <el-table-column type="selection" width="55" align="center"/>
       <el-table-column label="设备编码" align="center" prop="deviceCode"/>
       <el-table-column label="设备名称" align="center" prop="deviceName"/>
+      <el-table-column label="所属产品" align="center" prop="productName"  />
       <el-table-column label="网关编码" align="center" prop="gwDevCode"/>
       <el-table-column label="产品编码" align="center" prop="productCode"/>
       <el-table-column label="设备秘钥" align="center" prop="deviceSecret"/>
@@ -145,8 +156,8 @@
     <pagination
       v-show="total>0"
       :total="total"
-      :page.sync="queryParams.pageNum"
-      :limit.sync="queryParams.pageSize"
+      :page.sync="query.pageNum"
+      :limit.sync="query.pageSize"
       @pagination="getList"
     />
 
@@ -219,21 +230,17 @@ export default {
       title: "",
       // 是否显示弹出层
       open: false,
+      productCode: this.$route.query.code,
       // 查询参数
-      queryParams: {
-        pageNum: 1,
-        pageSize: 10,
-        deviceCode: null,
-        deviceName: null,
-        gwDevCode: null,
+      query: {
+        paramData: {
+          productCode: this.$route.query.code
+        },
+        pageNo: 1,
+        limit: 10,
         productCode: null,
-        activeStatus: null,
-        lastOnlineTime: null,
-        deviceSecret: null,
-        firmwareVersion: null,
-        devHost: null,
-        devPort: null,
-        status: null,
+        enableStatus: null,
+        activeStatus: null
       },
       // 表单参数
       form: {},
@@ -269,6 +276,16 @@ export default {
       }
     };
   },
+  watch: {
+    $route: {
+      handler() {
+        this.productCode = this.$route.query.code
+        this.getList()
+        // 深度监听，同时也可监听到param参数变化
+      },
+      deep: true
+    }
+  },
   created() {
     this.getList();
     this.getProductList();
@@ -277,7 +294,7 @@ export default {
     /** 查询设备管理列表 */
     getList() {
       this.loading = true;
-      listDevice(this.queryParams).then(response => {
+      listDevice(this.query).then(response => {
         this.deviceList = response.rows;
         this.total = response.total;
         this.loading = false;
@@ -340,7 +357,7 @@ export default {
     },
     /** 搜索按钮操作 */
     handleQuery() {
-      this.queryParams.pageNum = 1;
+      this.query.pageNum = 1;
       this.getList();
     },
     /** 重置按钮操作 */
@@ -430,7 +447,7 @@ export default {
     /** 导出按钮操作 */
     handleExport() {
       this.download('business/device/export', {
-        ...this.queryParams
+        ...this.query
       }, `business_device.xlsx`)
     }
   }

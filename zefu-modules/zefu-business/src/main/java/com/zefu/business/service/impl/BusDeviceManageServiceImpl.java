@@ -80,7 +80,9 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
      */
     @Override
     public List<BusDeviceManage> selectBusDeviceManageList(BusDeviceManage busDeviceManage) {
-        return busDeviceManageMapper.selectBusDeviceManageList(busDeviceManage);
+        List<BusDeviceManage> busDeviceManages = busDeviceManageMapper.selectBusDeviceManageList(busDeviceManage);
+
+        return busDeviceManages;
     }
 
     /**
@@ -207,7 +209,27 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
     }
 
     @Override
-    public List<DeviceRtHistoryResDto> searchRtItem(PageReqDto<DeviceRtItemReqDto> searchPage) {
+    public PageResDto<DeviceRtHistoryResDto> searchRtItem(PageReqDto<DeviceRtItemReqDto> searchPage) {
+        DeviceRtItemReqDto params = searchPage.getParamData();
+        List<EsRange> listRange = new ArrayList<>();
+        List<SearchItem> searchItemList = new ArrayList<>();
+        this.buildParam(params.getDeviceCode(), listRange, searchItemList, params);
+        ProductFuncTypeEnum typeEnum = ProductFuncTypeEnum.explain(params.getFuncType());
+        int startId = (searchPage.getPageNo() - 1) * searchPage.getLimit();
+        List<DeviceRtHistoryResDto> resultPage = dataCenterService.searchDeviceRuntimeList(params.getProductCode(), params.getDeviceCode(),
+                params.getIdentifier(), typeEnum, searchItemList, startId, searchPage.getLimit(), listRange);
+
+        long total = 0;
+        if (!CollectionUtils.isEmpty(resultPage)) {
+            total = dataCenterService.countDeviceRuntime(params.getProductCode(), params.getDeviceCode(), typeEnum,
+                    params.getIdentifier(), searchItemList, listRange);
+            this.processEsRtData(resultPage, params);
+        }
+        PageResDto<DeviceRtHistoryResDto> pageResult = PageResDto.genResult(searchPage.getPageNo(), searchPage.getLimit(), total, resultPage, null);
+        return pageResult;
+    }
+    @Override
+    public PageResDto<DeviceRtHistoryResDto> searchSetItem(PageReqDto<DeviceRtItemReqDto> searchPage) {
         DeviceRtItemReqDto params = searchPage.getParamData();
         List<EsRange> listRange = new ArrayList<>();
         List<SearchItem> searchItemList = new ArrayList<>();
@@ -217,12 +239,16 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
         List<DeviceRtHistoryResDto> resultPage = dataCenterService.searchDeviceSetList(params.getProductCode(), params.getDeviceCode(),
                 params.getIdentifier(), typeEnum, searchItemList, startId, searchPage.getLimit(), listRange);
 
+        long total = 0;
         if (!CollectionUtils.isEmpty(resultPage)) {
+            total = dataCenterService.countDeviceSet(params.getProductCode(), params.getDeviceCode(), typeEnum,
+                    params.getIdentifier(), searchItemList, listRange);
             this.processEsRtData(resultPage, params);
         }
-        return resultPage;
+        PageResDto<DeviceRtHistoryResDto> pageResult =
+                PageResDto.genResult(searchPage.getPageNo(), searchPage.getLimit(), total, resultPage, null);
+        return pageResult;
     }
-
     /**
      * 下行指令返回值处理
      */
@@ -287,19 +313,7 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
         deviceCache.publish(key, bo);
     }
 
-    @Override
-    public List<DeviceRtHistoryResDto> searchSetItem(PageReqDto<DeviceRtItemReqDto> searchPage) {
-        DeviceRtItemReqDto params = searchPage.getParamData();
-        List<EsRange> listRange = new ArrayList<>();
-        List<SearchItem> searchItemList = new ArrayList<>();
-        this.buildParam(params.getDeviceCode(), listRange, searchItemList, params);
-        ProductFuncTypeEnum typeEnum = ProductFuncTypeEnum.explain(params.getFuncType());
-        int startId = (searchPage.getPageNo() - 1) * searchPage.getLimit();
-        List<DeviceRtHistoryResDto> resultPage = dataCenterService.searchDeviceSetList(params.getProductCode(), params.getDeviceCode(),
-                params.getIdentifier(), typeEnum, searchItemList, startId, searchPage.getLimit(), listRange);
-        this.processEsRtData(resultPage, params);
-        return resultPage;
-    }
+
 
     @Override
     public PageResDto<DevicePageResDto> queryByPage(PageReqDto<DevQueryReqDto> pageReqDto) {
@@ -322,7 +336,7 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
         query.setProductCode(productCode);
         query.setNodeType(nodeType);
         query.setEnableStatus(item.getEnableStatus());
-        //query.setActiveStatus(item.getActiveStatus());
+        query.setActiveStatus(item.getActiveStatus());
         List<DevicePageResDto> list = busDeviceManageMapper.queryByPage(query, startId, pageReqDto.getLimit());
         Long total = busDeviceManageMapper.countByPage(query);
         this.processActiveStatus(list);

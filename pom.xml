@@ -226,6 +226,11 @@
                 <artifactId>zefu-modules-business</artifactId>
                 <version>${zefu.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.zefu</groupId>
+                <artifactId>zefu-modules-mq</artifactId>
+                <version>${zefu.version}</version>
+            </dependency>
             <!-- 安全模块 -->
             <dependency>
                 <groupId>com.zefu</groupId>

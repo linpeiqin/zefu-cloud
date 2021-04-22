@@ -10,11 +10,11 @@ import java.util.List;
 public class PageResDto<T> implements Serializable {
     private static final long serialVersionUID = 4042956845807247626L;
     private int pageNo = 1;
-    private int          limit = 20;
-    private long         total;
-    private int          pages = 1;
-    private              List<T> resultData;
-    private              Object paramData;
+    private int limit = 20;
+    private long total;
+    private int pages = 1;
+    private List<T> resultData;
+    private Object paramData;
 //    /**
 //     * 构造方法
 //     * @param pageNo 页码
@@ -29,6 +29,7 @@ public class PageResDto<T> implements Serializable {
 
     /**
      * 设置页码
+     *
      * @param pageNo 页码
      */
     public void setPageNo(final int pageNo) {
@@ -42,6 +43,7 @@ public class PageResDto<T> implements Serializable {
 
     /**
      * 设置limit
+     *
      * @param limit 查询条数
      */
     public void setLimit(final int limit) {
@@ -49,7 +51,9 @@ public class PageResDto<T> implements Serializable {
         this.limit = lm;
     }
 
-    /**总页码*/
+    /**
+     * 总页码
+     */
     public int getPages() {
         if (getTotal() == 0) {
             setPages(1);
@@ -76,7 +80,7 @@ public class PageResDto<T> implements Serializable {
         return this.pages;
     }
 
-    public void setTotal(long total){
+    public void setTotal(long total) {
         this.total = total;
         this.setPages(total);
     }

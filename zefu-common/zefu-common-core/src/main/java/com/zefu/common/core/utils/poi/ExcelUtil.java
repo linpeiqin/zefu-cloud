@@ -528,13 +528,16 @@ public class ExcelUtil<T>
         }
         else if (ColumnType.NUMERIC == attr.cellType())
         {
-            cell.setCellValue(StringUtils.contains(Convert.toStr(value), ".") ? Convert.toDouble(value) : Convert.toInt(value));
+            if (StringUtils.isNotNull(value))
+            {
+                cell.setCellValue(StringUtils.contains(Convert.toStr(value), ".") ? Convert.toDouble(value) : Convert.toInt(value));
+            }
         }
         else if (ColumnType.IMAGE == attr.cellType())
         {
             ClientAnchor anchor = new XSSFClientAnchor(0, 0, 0, 0, (short) cell.getColumnIndex(), cell.getRow().getRowNum(), (short) (cell.getColumnIndex() + 1),
                     cell.getRow().getRowNum() + 1);
-            String imagePath = Convert.toStr(value);
+            String imagePath = Convert.toStr(value);List<RouterVo> childrenList = new ArrayList<RouterVo>();
             if (StringUtils.isNotEmpty(imagePath))
             {
                 byte[] data = ImageUtils.getImage(imagePath);

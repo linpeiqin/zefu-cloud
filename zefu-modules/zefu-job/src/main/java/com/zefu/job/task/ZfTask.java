@@ -8,20 +8,20 @@ import com.zefu.common.core.utils.StringUtils;
  * 
  * @author ruoyi|linking
  */
-@Component("ryTask")
-public class RyTask
+@Component("zfTask")
+public class ZfTask
 {
-    public void ryMultipleParams(String s, Boolean b, Long l, Double d, Integer i)
+    public void zfMultipleParams(String s, Boolean b, Long l, Double d, Integer i)
     {
         System.out.println(StringUtils.format("执行多参方法： 字符串类型{}，布尔类型{}，长整型{}，浮点型{}，整形{}", s, b, l, d, i));
     }
 
-    public void ryParams(String params)
+    public void zfParams(String params)
     {
         System.out.println("执行有参方法：" + params);
     }
 
-    public void ryNoParams()
+    public void zfNoParams()
     {
         System.out.println("执行无参方法");
     }

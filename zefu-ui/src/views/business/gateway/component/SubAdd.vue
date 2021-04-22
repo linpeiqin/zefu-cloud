@@ -143,15 +143,17 @@ export default {
     init() {
       const para = this.query
       deviceSearchApi(para).then((data) => {
-        this.tableData = data.rows
-        this.total = data.total
+        const retValue = data.data
+        this.tableData = retValue.resultData
+        this.total = retValue.total
       })
     },
     handleSearch() {
       const para = this.query
       deviceSearchApi(para).then((data) => {
-        this.tableData = data.rows
-        this.total = data.total
+        const retValue = data.data
+        this.tableData = retValue.resultData
+        this.total = retValue.total
       })
     },
     toggleSelection(rows) {

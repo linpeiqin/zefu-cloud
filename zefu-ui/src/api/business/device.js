@@ -56,11 +56,11 @@ export function delDevice(id) {
   })
 }
 
-export function deviceSearchApi(query) {
+export function deviceSearchApi(data) {
   return request({
-    url: '/business/device/list',
-    method: 'get',
-    params: query
+    url: '/business/device/search',
+    method: 'post',
+    data
   })
 }
 export function deviceSubApi(data) {
