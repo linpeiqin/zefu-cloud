@@ -26,7 +26,7 @@ public interface RemoteDeviceService
     @PostMapping(value = "/device/activeDevice")
     public R<Boolean> activeDevice(@RequestBody DeviceActiveMqBo bo);
     @PostMapping(value = "/device/batchChangeStatusByCode")
-    public R<Boolean> batchChangeStatusByCode(@RequestBody List<String> devices, @RequestBody BatchOpEnum batchOpEnum);
+    public R<Boolean> batchChangeStatusByCode(@RequestParam("devices") List<String> devices, @RequestBody BatchOpEnum batchOpEnum);
     @GetMapping (value = "/device/queryByDevCode")
     public R<DevicePageResDto> queryByDevCode(@RequestParam("devCode") String devCode);
 

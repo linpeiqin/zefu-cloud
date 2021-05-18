@@ -268,7 +268,7 @@ public class BusDeviceManageController extends BaseController
     }
     //以下为开放接口
     @RequestMapping(method = RequestMethod.POST, value = "/batchChangeStatusByCode",consumes="application/json")
-    public R<Boolean> batchChangeStatusByCode(@RequestBody List<String> devices, @RequestBody BatchOpEnum batchOpEnum){
+    public R<Boolean> batchChangeStatusByCode(@RequestParam List<String> devices, @RequestBody BatchOpEnum batchOpEnum){
         this.busDeviceManageService.batchChangeStatusByCode(devices,batchOpEnum);
         return R.ok();
     }
