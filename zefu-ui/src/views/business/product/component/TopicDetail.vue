@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { productTopicApi } from '@/api/business/product'
+import {productTopicApi} from '@/api/business/product'
 
 export default {
   name: 'TopicDetail',

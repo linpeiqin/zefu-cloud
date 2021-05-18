@@ -26,6 +26,7 @@ import serviceMgrPage from './component/ServiceMgrPage.vue'
 import propMgrPage from './component/PropMgrPage.vue'
 import eventMgrPage from './component/EventMgrPage.vue'
 import topicDetail from './component/TopicDetail'
+
 export default {
   name: "ProductEdit",
   components: {

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * 公共Controller
  *
@@ -33,7 +35,7 @@ public class BusComController {
     IServiceInvokeLockCache serviceInvokeLockCache;
 
     @PostMapping(value = "/propertyGetCache/propGetValueWrite")
-    public void propGetValueWrite(String messageId, Object value) {
+    public void propGetValueWrite(String messageId, String value) {
         this.propertyGetCache.propGetValueWrite(messageId, value);
     }
 

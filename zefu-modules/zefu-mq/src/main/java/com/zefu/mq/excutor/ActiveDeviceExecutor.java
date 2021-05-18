@@ -4,6 +4,7 @@ package com.zefu.mq.excutor;
 import com.zefu.business.api.RemoteDeviceService;
 import com.zefu.common.base.constants.Constants;
 import com.zefu.common.base.domain.gateway.mq.DeviceActiveMqBo;
+import com.zefu.mq.redis.publish.OnlinePublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -19,6 +20,7 @@ public class ActiveDeviceExecutor {
     public void execute(DeviceActiveMqBo bo){
         try {
             deviceService.activeDevice(bo);
+            OnlinePublisher.send(bo);
         } catch (Exception e) {
             log.warn("", e);
         }

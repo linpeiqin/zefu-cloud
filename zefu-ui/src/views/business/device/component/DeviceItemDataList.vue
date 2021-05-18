@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { deviceRtListApi, deviceSetListApi } from '@/api/business/device';
+import {deviceRtListApi, deviceSetListApi} from '@/api/business/device';
 
 export default {
   name: "DeviceItemDataList",

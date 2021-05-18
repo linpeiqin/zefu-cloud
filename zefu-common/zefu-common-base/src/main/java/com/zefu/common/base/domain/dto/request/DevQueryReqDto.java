@@ -9,7 +9,7 @@ public class DevQueryReqDto {
     String gwDevCode;
     String deviceCode;
     String productCode;
-    Integer enableStatus;
+    String enableStatus;
     Integer activeStatus;
     String  nodeType;
     /**

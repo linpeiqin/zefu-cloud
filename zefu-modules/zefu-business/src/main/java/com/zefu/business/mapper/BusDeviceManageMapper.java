@@ -74,4 +74,6 @@ public interface BusDeviceManageMapper
     int batchOfflineByCode(List<String> devices);
 
     int batchOnlineByCode(List<String> devices);
+
+    void updateByCode(BusDeviceManage devicePo);
 }

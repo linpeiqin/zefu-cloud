@@ -65,7 +65,7 @@ public class DeviceMessageUpExecutor {
         try {
             remoteBusComService.todayTotalIncr();
             this.rebuildMsg(msg);
-
+            if (msg.getProductCode() == null || msg.getDeviceCode() == null) return ;
             IBaseProtocol protocolService = this.queryProtocolByProductCode(msg.getProductCode());
             /** 来自设备转化为平台需要的数据结构 */
             DeviceReportMessage deviceMessage = protocolService.decode(msg.getTopic(), msg.getDeviceCode(), msg.getSourceMsg());
@@ -147,13 +147,14 @@ public class DeviceMessageUpExecutor {
                 log.warn("", e);
             }
         }
-        remoteBusComService.propGetValueWrite(deviceMessage.getMessageId(), deviceMessage.getValue());
+        remoteBusComService.propGetValueWrite(deviceMessage.getMessageId(), JSONProvider.toJSONString(deviceMessage.getValue()));
 
     }
 
     private void rebuildMsg(DeviceUpMessageBo msg) {
         String deviceCode = TopicBiz.parseDeviceCode(msg.getTopic());
         DevicePageResDto devicePageResDto = deviceService.queryByDevCode(deviceCode).getData();
+        if (devicePageResDto == null) return ;
         String funcType = TopicBiz.parseFuncType(msg.getTopic());
         ProductFuncTypeEnum funcTypeEnum = ProductFuncTypeEnum.explain(funcType);
         msg.setProductCode(devicePageResDto.getProductCode());
@@ -177,7 +178,7 @@ public class DeviceMessageUpExecutor {
     private Boolean setRtCache(ProductFuncTypeEnum funcType, String deviceCode, Date arriveTime,
         EsInsertDataBo dataBo) {
         String redisKey = RedisKeyUtil.buildRtCacheKey(deviceCode, funcType);
-        cacheTemplate.setCacheMapValue(redisKey, dataBo.getIdentifier(), dataBo.getEsMessage());
+        cacheTemplate.setCacheMapValue(redisKey, dataBo.getIdentifier(), JSONProvider.toJSONString(dataBo.getEsMessage()));
         return true;
     }
 

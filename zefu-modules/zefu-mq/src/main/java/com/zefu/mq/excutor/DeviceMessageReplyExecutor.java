@@ -150,7 +150,7 @@ public class DeviceMessageReplyExecutor {
                 log.warn("", e);
             }
         }
-        remoteBusComService.propGetValueWrite(deviceMessage.getMessageId(), deviceMessage.getValue());
+        remoteBusComService.propGetValueWrite(deviceMessage.getMessageId(), JSONProvider.toJSONString(deviceMessage.getValue()));
     }
 
     private void rebuildMsg(DeviceUpMessageBo msg) {
@@ -179,7 +179,7 @@ public class DeviceMessageReplyExecutor {
     private Boolean setRtCache(ProductFuncTypeEnum funcType, String deviceCode, Date arriveTime,
         EsInsertDataBo dataBo) {
         String redisKey = RedisKeyUtil.buildRtCacheKey(deviceCode, funcType);
-        cacheTemplate.addHashMap(redisKey, dataBo.getIdentifier(), dataBo.getEsMessage());
+        cacheTemplate.addHashMap(redisKey, dataBo.getIdentifier(), JSONProvider.toJSONString(dataBo.getEsMessage()));
         return true;
     }
 

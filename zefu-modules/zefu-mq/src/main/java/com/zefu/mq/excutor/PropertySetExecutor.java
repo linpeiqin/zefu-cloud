@@ -86,7 +86,7 @@ public class PropertySetExecutor {
         deviceDownMessage.setBody(dataBo.getEsMessage().getRequest());
         deviceDownMessage.setIdentifier(dataBo.getIdentifier());
         deviceDownMessage.setDeviceCode(dataBo.getEsMessage().getDeviceCode());
-        deviceDownMessage.setProductCode(dataBo.getEsMessage().getDeviceCode());
+        deviceDownMessage.setProductCode(dataBo.getEsMessage().getProductCode());
         return deviceDownMessage;
     }
 

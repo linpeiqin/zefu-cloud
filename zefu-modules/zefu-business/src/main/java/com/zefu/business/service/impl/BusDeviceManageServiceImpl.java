@@ -378,6 +378,14 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
     @Override
     public void activeDevice(DeviceActiveMqBo bo) {
         deviceOfflineCache.cacheWriter(bo);
+        BusDeviceManage devicePo = new BusDeviceManage();
+        devicePo.setDeviceCode(bo.getDeviceCode());
+        devicePo.setDevHost(bo.getHost());
+        devicePo.setDevPort(bo.getPort());
+        int activeStatus = bo.getActive() ? 1 : 0;
+        devicePo.setActiveStatus(activeStatus);
+        devicePo.setLastOnlineTime(new Date());
+        busDeviceManageMapper.updateByCode(devicePo);
     }
 
     @Override
@@ -417,6 +425,7 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
         for (DevicePageResDto item : list) {
             DeviceActiveMqBo deviceActiveMqBo = map.get(item.getDeviceCode());
             if (null == deviceActiveMqBo) {
+                item.setActiveStatus(0);
                 continue;
             }
             item.setLastOnlineTime(deviceActiveMqBo.getTimestamp());

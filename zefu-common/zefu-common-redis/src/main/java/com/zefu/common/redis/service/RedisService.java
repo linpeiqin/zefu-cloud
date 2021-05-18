@@ -280,13 +280,12 @@ public class RedisService {
         if (CollectionUtils.isEmpty(keys)) {
             return results;
         }
-        List<String> list = redisTemplate.opsForValue().multiGet(keys);
-        for (String item : list) {
-            T result = JSONProvider.parseObject(item, clazz);
-            if (null == result) {
+        List<T> list = redisTemplate.opsForValue().multiGet(keys);
+        for (T item : list) {
+            if (null == item) {
                 continue;
             }
-            results.add(result);
+            results.add(item);
         }
         return results;
     }

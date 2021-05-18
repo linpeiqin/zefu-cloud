@@ -38,11 +38,12 @@ public interface Constants {
         String PROP = "prop";
         String EVENT = "event";
         String MSG_REPLY = "message/reply";
-        String PROP_GET_REPLY = "property/getreply";
+        String PROP_GET_REPLY = "property/get/reply";
         String SERVICE_INVOKE = "service/invoke";
         String PROP_SET = "property/set";
         String PROP_GET = "property/get";
         String SUB = "sub";
+        String UPGRADE_REPLY = "upgrade/reply";
     }
 
     interface REDIS_CHANNEL{
@@ -52,6 +53,8 @@ public interface Constants {
         String SERVICE_INVOKE = "serviceInvoke";
         /**读取设备属性*/
         String PROP_READER = "propertyReader";
+        /**设备在线*/
+        String ONLINE = "deviceOnline";
     }
 
     interface REDIS_DEF{
@@ -111,6 +114,7 @@ public interface Constants {
         String PROPERTY_READER_NAME = "propertyReaderTask";
         /**MQTT client 监听上行消息客户端*/
         String MQTT_UP_NAME = "mqttUpMessageTask";
+        String MQTT_DEVICE_STATUS_NAME = "mqttDeviceStatusTask";
     }
 
     interface NETWORK{

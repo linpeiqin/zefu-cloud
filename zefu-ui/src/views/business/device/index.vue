@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
-    <el-form :model="query" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="search" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="设备编码" prop="deviceCode">
         <el-input
-          v-model="query.deviceCode"
+          v-model="search.deviceCode"
           placeholder="请输入设备编码"
           clearable
           size="small"
@@ -12,7 +12,7 @@
       </el-form-item>
       <el-form-item label="设备名称" prop="deviceName">
         <el-input
-          v-model="query.deviceName"
+          v-model="search.deviceName"
           placeholder="请输入设备名称"
           clearable
           size="small"
@@ -21,7 +21,7 @@
       </el-form-item>
       <el-form-item label="产品编码" prop="productCode">
         <el-select
-          v-model="query.productCode"
+          v-model="search.productCode"
           clearable
           placeholder="请选择产品"
         >
@@ -34,14 +34,28 @@
         </el-select>
       </el-form-item>
       <el-form-item label="在线状态" prop="activeStatus">
-        <el-select v-model="query.activeStatus" placeholder="请选择0:离线 1:在线" clearable size="small">
-          <el-option label="请选择字典生成" value=""/>
+        <el-select v-model="search.activeStatus" placeholder="请选择0:离线 1:在线" clearable size="small">
+          <el-option
+            v-for="dict in activeStatusOptions"
+            :key="dict.dictValue"
+            :label="dict.dictLabel"
+            :value="dict.dictValue"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="节点类型" prop="nodeType">
-        <el-select v-model="query.nodeType"  clearable size="small">
-          <el-option label="请选择字典生成" value=""/>
+        <el-select v-model="search.nodeType" placeholder="请选择节点类型" clearable size="small">
+          <el-option
+            v-for="dict in nodeTypeOptions"
+            :key="dict.dictValue"
+            :label="dict.dictLabel"
+            :value="dict.dictValue"
+          />
         </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
     <el-row :gutter="10" class="mb8">
@@ -101,12 +115,12 @@
       <el-table-column label="所属产品" align="center" prop="productName"  />
       <el-table-column label="网关编码" align="center" prop="gwDevCode"/>
       <el-table-column label="产品编码" align="center" prop="productCode"/>
-      <el-table-column label="设备秘钥" align="center" prop="deviceSecret"/>
+      <el-table-column v-if="false" label="设备秘钥" align="center" prop="deviceSecret"/>
       <el-table-column label="节点类型" align="center" prop="nodeTypeName" :formatter="nodeTypeFormat"/>
-      <el-table-column label="设备状态" align="center" width="100">
+      <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
-            v-model="scope.row.status"
+            v-model="scope.row.enableStatus"
             active-value="0"
             inactive-value="1"
             @change="handleStatusChange(scope.row)"
@@ -114,7 +128,7 @@
         </template>
       </el-table-column>
       <el-table-column label="最后上线时间" align="center" prop="lastOnlineTime" :formatter="formatTime"/>
-      <el-table-column label="是否在线" align="center" prop="activeStatus" :formatter="formatActive"/>
+      <el-table-column label="是否在线" align="center" prop="activeStatus" :formatter="activeFormat"/>
       <el-table-column label="创建时间" align="center" prop="createTime"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -156,8 +170,8 @@
     <pagination
       v-show="total>0"
       :total="total"
-      :page.sync="query.pageNum"
-      :limit.sync="query.pageSize"
+      :page.sync="query.pageNo"
+      :limit.sync="query.limit"
       @pagination="getList"
     />
 
@@ -199,7 +213,14 @@
 </template>
 
 <script>
-import {listDevice, getDevice, delDevice, addDevice, updateDevice, changeDeviceStatus} from "@/api/business/device";
+import {
+  addDevice,
+  changeDeviceStatus,
+  delDevice,
+  deviceSearchApi,
+  getDevice,
+  updateDevice
+} from "@/api/business/device";
 import {listProduct} from '@/api/business/product';
 
 export default {
@@ -220,7 +241,8 @@ export default {
       // 节点类型字典
       nodeTypeOptions: [],
       // 状态字典
-      statusOptions: [],
+      enableStatusOptions: [],
+      activeStatusOptions:[],
       // 总条数
       total: 0,
       // 设备管理表格数据
@@ -231,6 +253,12 @@ export default {
       // 是否显示弹出层
       open: false,
       productCode: this.$route.query.code,
+      /** 搜索参数*/
+      search: {
+        productCode: null,
+        enableStatus: null,
+        activeStatus: null
+      },
       // 查询参数
       query: {
         paramData: {
@@ -238,9 +266,6 @@ export default {
         },
         pageNo: 1,
         limit: 10,
-        productCode: null,
-        enableStatus: null,
-        activeStatus: null
       },
       // 表单参数
       form: {},
@@ -280,34 +305,52 @@ export default {
     $route: {
       handler() {
         this.productCode = this.$route.query.code
+        this.query = {
+          paramData: {
+            productCode: this.$route.query.code
+          },
+          pageNo: 1,
+          limit: 10
+        }
         this.getList()
-        // 深度监听，同时也可监听到param参数变化
       },
       deep: true
     }
   },
   created() {
     this.getList();
+    this.getDicts("bus_node_type").then(response => {
+      this.nodeTypeOptions = response.data;
+    });
+    this.getDicts("sys_normal_disable").then(response => {
+      this.enableStatusOptions = response.data;
+    });
+    this.getDicts("bus_device_status").then(response => {
+      this.activeStatusOptions = response.data;
+    });
     this.getProductList();
   },
   methods: {
     /** 查询设备管理列表 */
     getList() {
-      this.loading = true;
-      listDevice(this.query).then(response => {
-        this.deviceList = response.rows;
-        this.total = response.total;
+      const para = this.query
+      const paramData = {
+        productCode: this.$route.query.code
+      }
+      para.paramData = paramData
+      deviceSearchApi(para).then((data) => {
+        const retValue = data.data
+        this.deviceList = retValue.resultData
+        this.total = retValue.total
         this.loading = false;
-      });
+      })
     },
     getProductList() {
       listProduct({}).then((data) => {
         this.productList = data.rows
       })
     },
-    formatActive(value) {
-      return value.activeStatus === 1 ? '在线' : '离线'
-    },
+
     genSign(row) {
       const userName = row.deviceCode + '|' + new Date().getTime()
       const password = this.$md5(userName + '|' + row.deviceSecret)
@@ -322,9 +365,8 @@ export default {
     nodeTypeFormat(row, column) {
       return this.selectDictLabel(this.nodeTypeOptions, row.nodeType);
     },
-    // 状态字典翻译
-    statusFormat(row, column) {
-      return this.selectDictLabel(this.statusOptions, row.status);
+    activeFormat(row,column) {
+      return  this.selectDictLabel(this.activeStatusOptions, row.activeStatus);
     },
     // 取消按钮
     cancel() {
@@ -346,7 +388,6 @@ export default {
         firmwareVersion: null,
         devHost: null,
         devPort: null,
-        status: "0",
         createBy: null,
         createTime: null,
         updateBy: null,
@@ -357,8 +398,15 @@ export default {
     },
     /** 搜索按钮操作 */
     handleQuery() {
-      this.query.pageNum = 1;
-      this.getList();
+      const para = this.query
+      const paramData = this.search
+      para.paramData = paramData
+      deviceSearchApi(para).then((data) => {
+        const retValue = data.data
+        this.deviceList = retValue.resultData
+        this.total = retValue.total
+        this.loading = false;
+      })
     },
     /** 重置按钮操作 */
     resetQuery() {
@@ -417,17 +465,17 @@ export default {
     },
     // 状态修改
     handleStatusChange(row) {
-      let text = row.status === "0" ? "启用" : "停用";
+      let text = row.enableStatus === "0" ? "启用" : "停用";
       this.$confirm('确认要"' + text + '""' + row.deviceName + '"设备吗?', "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(function () {
-        return changeDeviceStatus(row.id, row.status);
+        return changeDeviceStatus(row.id, row.enableStatus);
       }).then(() => {
         this.msgSuccess(text + "成功");
       }).catch(function () {
-        row.status = row.status === "0" ? "1" : "0";
+        row.enableStatus = row.enableStatus === "0" ? "1" : "0";
       });
     },
     /** 删除按钮操作 */

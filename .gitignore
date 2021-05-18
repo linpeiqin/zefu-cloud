@@ -1,0 +1,27 @@
+# Project exclude paths
+/zefu-api/zefu-api-system/target/
+/zefu-auth/target/
+/zefu-common/zefu-common-core/target/
+/zefu-common/zefu-common-datascope/target/
+/zefu-common/zefu-common-datasource/target/
+/zefu-common/zefu-common-log/target/
+/zefu-common/zefu-common-redis/target/
+/zefu-common/zefu-common-security/target/
+/zefu-common/zefu-common-swagger/target/
+/zefu-gateway/target/
+/zefu-modules/zefu-business/target/
+/zefu-modules/zefu-file/target/
+/zefu-modules/zefu-gen/target/
+/zefu-modules/zefu-job/target/
+/zefu-modules/zefu-system/target/
+/zefu-visual/zefu-monitor/target/
+/
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+

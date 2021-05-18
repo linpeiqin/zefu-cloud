@@ -187,8 +187,8 @@
           </el-select>
         </el-form-item>
         </el-col>
-        <el-col :span="12">
-        <el-form-item label="节点类型">
+        <el-col :span="24">
+        <el-form-item label="节点类型" >
           <el-radio-group v-model="form.nodeType">
             <el-radio
               v-for="dict in nodeTypeOptions"
@@ -198,7 +198,7 @@
           </el-radio-group>
         </el-form-item>
         </el-col>
-        <el-col :span="12">
+        <el-col :span="24">
           <el-form-item label="图标" >
             <el-popover
               placement="bottom-start"
@@ -247,8 +247,17 @@
 </template>
 
 <script>
-import { listProduct, getProduct, delProduct, addProduct, updateProduct, changeProductStatus,protocolListApi } from "@/api/business/product";
+import {
+  addProduct,
+  changeProductStatus,
+  delProduct,
+  getProduct,
+  listProduct,
+  protocolListApi,
+  updateProduct
+} from "@/api/business/product";
 import IconSelect from "@/components/IconSelect";
+
 export default {
   name: "Product",
   components: {
@@ -348,10 +357,6 @@ export default {
     // 节点类型字典翻译
     nodeTypeFormat(row, column) {
       return this.selectDictLabel(this.nodeTypeOptions, row.nodeType);
-    },
-    // 状态字典翻译
-    statusFormat(row, column) {
-      return this.selectDictLabel(this.statusOptions, row.status);
     },
     // 取消按钮
     cancel() {

@@ -12,19 +12,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="productCode"    column="product_code"    />
         <result property="delFlag"    column="del_flag"    />
         <result property="activeStatus"    column="active_status"    />
+        <result property="enableStatus"    column="enable_status"    />
         <result property="lastOnlineTime"    column="last_online_time"    />
         <result property="deviceSecret"    column="device_secret"    />
         <result property="firmwareVersion"    column="firmware_version"    />
         <result property="devHost"    column="dev_host"    />
         <result property="devPort"    column="dev_port"    />
-        <result property="status"    column="status"    />
         <result property="createBy"    column="create_by"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"    column="update_by"    />
         <result property="updateTime"    column="update_time"    />
         <result property="remark"    column="remark"    />
-        <result property="productName" column="product_name"  />
-        <result property="nodeType" column="node_type"  />
     </resultMap>
     <resultMap id="ProResultMap"  type="com.zefu.common.base.domain.dto.response.device.DevicePageResDto">
         <result property="id"    column="id"    />
@@ -34,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="productCode"    column="product_code"    />
         <result property="delFlag"    column="del_flag"    />
         <result property="activeStatus"    column="active_status"    />
+        <result property="enableStatus"    column="enable_status"    />
         <result property="lastOnlineTime"    column="last_online_time"    />
         <result property="deviceSecret"    column="device_secret"    />
         <result property="firmwareVersion"    column="firmware_version"    />
@@ -54,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             limit 1
     </select>
     <sql id="selectBusDeviceManageVo">
-        select id, device_code, device_name, gw_dev_code, product_code, del_flag, active_status, last_online_time, device_secret, firmware_version, dev_host, dev_port, status, create_by, create_time, update_by, update_time, remark from bus_device_manage
+        select id, device_code, device_name, gw_dev_code, product_code, del_flag, active_status, last_online_time, device_secret, firmware_version, dev_host, dev_port, enable_status, create_by, create_time, update_by, update_time, remark from bus_device_manage
     </sql>
 
     <select id="selectBusDeviceManageList" parameterType="BusDeviceManage" resultMap="BusDeviceManageResult">
@@ -65,15 +64,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="gwDevCode != null  and gwDevCode != ''"> and gw_dev_code = #{gwDevCode}</if>
             <if test="productCode != null  and productCode != ''"> and product_code = #{productCode}</if>
             <if test="activeStatus != null "> and active_status = #{activeStatus}</if>
+            <if test="enableStatus != null  "> and enable_status = #{enableStatus}</if>
             <if test="lastOnlineTime != null "> and last_online_time = #{lastOnlineTime}</if>
             <if test="deviceSecret != null  and deviceSecret != ''"> and device_secret = #{deviceSecret}</if>
             <if test="firmwareVersion != null  and firmwareVersion != ''"> and firmware_version = #{firmwareVersion}</if>
             <if test="devHost != null  and devHost != ''"> and dev_host = #{devHost}</if>
             <if test="devPort != null "> and dev_port = #{devPort}</if>
-            <if test="status != null  and status != ''"> and status = #{status}</if>
+
         </where>
     </select>
-    
+    <update id="updateByCode" parameterType="BusDeviceManage">
+        update bus_device_manage
+        <set>
+            <if test="deviceName != null">
+                device_name = #{deviceName,jdbcType=VARCHAR},
+            </if>
+            <if test="gwDevCode != null">
+                gw_dev_code = #{gwDevCode,jdbcType=VARCHAR},
+            </if>
+            <if test="productCode != null">
+                product_code = #{productCode,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=INTEGER},
+            </if>
+            <if test="enableStatus != null">
+                enable_status = #{enableStatus,jdbcType=INTEGER},
+            </if>
+            <if test="activeStatus != null">
+                active_status = #{activeStatus,jdbcType=INTEGER},
+            </if>
+            <if test="lastOnlineTime != null">
+                last_online_time = #{lastOnlineTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deviceSecret != null">
+                device_secret = #{deviceSecret,jdbcType=VARCHAR},
+            </if>
+            <if test=" firmwareVersion != null">
+                firmware_version = #{firmwareVersion,jdbcType=VARCHAR},
+            </if>
+            <if test=" devHost != null">
+                dev_host = #{devHost,jdbcType=VARCHAR},
+            </if>
+            <if test=" devPort != null">
+                dev_port = #{devPort,jdbcType=INTEGER},
+            </if>
+        </set>
+        where device_code = #{deviceCode,jdbcType=VARCHAR}
+    </update>
     <select id="selectBusDeviceManageById" parameterType="Long" resultMap="BusDeviceManageResult">
         <include refid="selectBusDeviceManageVo"/>
         where id = #{id}
@@ -96,9 +140,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="item.productCode != null">
             AND td.product_code = #{item.productCode,jdbcType=VARCHAR}
         </if>
-        <!--<if test="item.enableStatus != null">
+        <if test="item.enableStatus != null">
             AND td.enable_status = #{item.enableStatus,jdbcType=INTEGER}
-        </if>-->
+        </if>
         <if test="item.activeStatus != null">
             AND td.active_status = #{item.activeStatus,jdbcType=INTEGER}
         </if>
@@ -126,9 +170,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="item.productCode != null">
             AND td.product_code = #{item.productCode,jdbcType=VARCHAR}
         </if>
-        <!--<if test="item.enableStatus != null">
+        <if test="item.enableStatus != null">
             AND td.enable_status = #{item.enableStatus,jdbcType=INTEGER}
-        </if>-->
+        </if>
         <if test="item.activeStatus != null">
             AND td.active_status = #{item.activeStatus,jdbcType=INTEGER}
         </if>
@@ -145,12 +189,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productCode != null">product_code,</if>
             <if test="delFlag != null">del_flag,</if>
             <if test="activeStatus != null">active_status,</if>
+            <if test="enableStatus != null">enable_status,</if>
             <if test="lastOnlineTime != null">last_online_time,</if>
             <if test="deviceSecret != null">device_secret,</if>
             <if test="firmwareVersion != null">firmware_version,</if>
             <if test="devHost != null">dev_host,</if>
             <if test="devPort != null">dev_port,</if>
-            <if test="status != null">status,</if>
             <if test="createBy != null">create_by,</if>
             <if test="createTime != null">create_time,</if>
             <if test="updateBy != null">update_by,</if>
@@ -164,12 +208,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productCode != null">#{productCode},</if>
             <if test="delFlag != null">#{delFlag},</if>
             <if test="activeStatus != null">#{activeStatus},</if>
+            <if test="enableStatus != null">#{enableStatus},</if>
             <if test="lastOnlineTime != null">#{lastOnlineTime},</if>
             <if test="deviceSecret != null">#{deviceSecret},</if>
             <if test="firmwareVersion != null">#{firmwareVersion},</if>
             <if test="devHost != null">#{devHost},</if>
             <if test="devPort != null">#{devPort},</if>
-            <if test="status != null">#{status},</if>
             <if test="createBy != null">#{createBy},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="updateBy != null">#{updateBy},</if>
@@ -187,12 +231,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="productCode != null">product_code = #{productCode},</if>
             <if test="delFlag != null">del_flag = #{delFlag},</if>
             <if test="activeStatus != null">active_status = #{activeStatus},</if>
+            <if test="enableStatus != null">enable_status = #{enableStatus},</if>
             <if test="lastOnlineTime != null">last_online_time = #{lastOnlineTime},</if>
             <if test="deviceSecret != null">device_secret = #{deviceSecret},</if>
             <if test="firmwareVersion != null">firmware_version = #{firmwareVersion},</if>
             <if test="devHost != null">dev_host = #{devHost},</if>
             <if test="devPort != null">dev_port = #{devPort},</if>
-            <if test="status != null">status = #{status},</if>
             <if test="createBy != null">create_by = #{createBy},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
             <if test="updateBy != null">update_by = #{updateBy},</if>

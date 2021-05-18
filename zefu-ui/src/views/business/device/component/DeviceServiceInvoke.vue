@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import { productPropsApi, propsTemplateApi } from '@/api/business/product'
-import { serviceInvokeApi } from '@/api/business/device'
+import {productPropsApi, propsTemplateApi} from '@/api/business/product'
+import {serviceInvokeApi} from '@/api/business/device'
 
 export default {
   name: 'ServiceInvoke',

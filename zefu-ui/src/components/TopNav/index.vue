@@ -124,7 +124,7 @@ export default {
     // 菜单选择事件
     handleSelect(key, keyPath) {
       this.currentIndex = key;
-      if (key.indexOf("http://") !== -1 || key.indexOf("https://") !== -1) {
+      if (this.ishttp(key)) {
         // http(s):// 路径新窗口打开
         window.open(key, "_blank");
       } else if (key.indexOf("/redirect") !== -1) {
@@ -149,6 +149,9 @@ export default {
         this.$store.commit("SET_SIDEBAR_ROUTERS", routes);
       }
       return routes;
+    },
+    ishttp(url) {
+      return url.indexOf('http://') !== -1 || url.indexOf('https://') !== -1
     }
   },
 };

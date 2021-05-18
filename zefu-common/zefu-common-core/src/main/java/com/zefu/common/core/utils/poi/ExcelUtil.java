@@ -537,7 +537,7 @@ public class ExcelUtil<T>
         {
             ClientAnchor anchor = new XSSFClientAnchor(0, 0, 0, 0, (short) cell.getColumnIndex(), cell.getRow().getRowNum(), (short) (cell.getColumnIndex() + 1),
                     cell.getRow().getRowNum() + 1);
-            String imagePath = Convert.toStr(value);List<RouterVo> childrenList = new ArrayList<RouterVo>();
+            String imagePath = Convert.toStr(value);
             if (StringUtils.isNotEmpty(imagePath))
             {
                 byte[] data = ImageUtils.getImage(imagePath);

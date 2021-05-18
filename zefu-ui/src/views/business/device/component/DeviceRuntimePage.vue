@@ -54,13 +54,10 @@
 </template>
 
 <script>
-import {
-  deviceRuntimeApi,
-  propertySetApi,
-  propertyGetApi
-} from '@/api/business/device'
-import { propsTemplateApi, propDetailSepcApi } from '@/api/business/product'
+import {deviceRuntimeApi, propertyGetApi, propertySetApi} from '@/api/business/device'
+import {propDetailSepcApi, propsTemplateApi} from '@/api/business/product'
 import deviceItemData from './DeviceItemDataList'
+
 export default {
   name: 'DevDetailPage',
   components: { deviceItemData },
@@ -129,7 +126,7 @@ export default {
       }
       propertyGetApi(param).then((data) => {
         item.value = data.data
-        item.arrivedTime = data.time
+       /* item.arrivedTime = data.time*/
         this.$alert(item.value, '返回结果', {
           confirmButtonText: '确定'
         })

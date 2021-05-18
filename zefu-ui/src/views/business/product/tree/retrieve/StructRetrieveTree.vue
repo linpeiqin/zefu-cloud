@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form ref="form" :model="formData">
-      
+
 
       <div>
         <el-dialog
@@ -81,6 +81,7 @@ import boolEditTree from '../edit/BoolEditTree'
 import numberEditTree from '../edit/NumberEditTree'
 import textEditTree from '../edit/TextEditTree'
 import dateEditTree from '../edit/DateEditTree'
+
 export default {
   name: 'StructTree',
   components: { editStructTree, boolEditTree, numberEditTree, textEditTree, dateEditTree },

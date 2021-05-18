@@ -39,7 +39,8 @@ import boolRetrieveTree from "./BoolRetrieveTree";
 import structRetrieveTree from "./StructRetrieveTree";
 import dateRetrieveTree from "./DateRetrieveTree";
 import emptyRetrieveTree from "./EmptyRetrieveTree";
-import { productDataTypeApi } from "@/api/business/product";
+import {productDataTypeApi} from "@/api/business/product";
+
 export default {
   name: "ByteTree",
   components: {

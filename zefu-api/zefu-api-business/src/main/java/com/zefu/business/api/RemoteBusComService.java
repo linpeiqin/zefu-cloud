@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.zefu.common.core.domain.R;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 /**
  * 业务公共服务
  * 
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface RemoteBusComService
 {
     @PostMapping(value = "/com/propertyGetCache/propGetValueWrite")
-    public void propGetValueWrite(@RequestParam("messageId") String messageId, @RequestParam("value") Object value);
+    public void propGetValueWrite(@RequestParam("messageId") String messageId, @RequestParam("value") String value);
     @PostMapping(value = "/com/messageCountCache/todayTotalIncr")
     public void todayTotalIncr();
     @PostMapping(value = "/com/propSetLockCache/lock")

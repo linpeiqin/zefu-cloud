@@ -76,9 +76,7 @@
 </template>
 
 <script>
-import {
-  deviceSearchApi, deviceGwMapApi
-} from '@/api/business/device'
+import {deviceGwMapApi, deviceSearchApi} from '@/api/business/device'
 
 export default {
   props: {

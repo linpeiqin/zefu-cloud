@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { Notification, MessageBox, Message } from 'element-ui'
+import {Message, MessageBox, Notification} from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import {getToken} from '@/utils/auth'
 import errorCode from '@/utils/errorCode'
-import { tansParams } from "@/utils/zefu";
+import {tansParams} from "@/utils/zefu";
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 // 创建axios实例

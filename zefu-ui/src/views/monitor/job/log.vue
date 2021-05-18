@@ -167,7 +167,7 @@
 </template>
 
 <script>
-import { listJobLog, delJobLog, cleanJobLog } from "@/api/monitor/jobLog";
+import {cleanJobLog, delJobLog, listJobLog} from "@/api/monitor/jobLog";
 
 export default {
   name: "JobLog",

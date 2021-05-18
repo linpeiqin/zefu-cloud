@@ -3,6 +3,7 @@ package com.zefu.business.cache.impl;
 
 import com.zefu.business.cache.IPropertyGetCache;
 import com.zefu.common.base.constants.Constants;
+import com.zefu.common.core.utils.bus.JSONProvider;
 import com.zefu.common.redis.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class PropertyGetCacheImpl implements IPropertyGetCache {
     RedisService cacheTemplate;
 
     @Override
-    public void propGetValueWrite(String messageId, Object value) {
+    public void propGetValueWrite(String messageId, String value) {
         if (null == value) {
             return;
         }

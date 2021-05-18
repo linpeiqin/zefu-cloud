@@ -61,7 +61,7 @@
 	<logger name="com.zefu" level="info" />
 	<!-- Spring日志级别控制  -->
 	<logger name="org.springframework" level="warn" />
-
+    <logger name="com.**.mapper.community" level="DEBUG"/>
 	<root level="info">
 		<appender-ref ref="console" />
 	</root>

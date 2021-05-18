@@ -9,6 +9,7 @@ import com.zefu.common.core.domain.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -23,9 +24,9 @@ public interface RemoteDeviceService
 {
 
     @PostMapping(value = "/device/activeDevice")
-    public R<Boolean> activeDevice(@RequestParam("bo") DeviceActiveMqBo bo);
+    public R<Boolean> activeDevice(@RequestBody DeviceActiveMqBo bo);
     @PostMapping(value = "/device/batchChangeStatusByCode")
-    public R<Boolean> batchChangeStatusByCode(@RequestParam("devices") List<String> devices, @RequestParam("batchOpEnum") BatchOpEnum batchOpEnum);
+    public R<Boolean> batchChangeStatusByCode(@RequestBody List<String> devices, @RequestBody BatchOpEnum batchOpEnum);
     @GetMapping (value = "/device/queryByDevCode")
     public R<DevicePageResDto> queryByDevCode(@RequestParam("devCode") String devCode);
 

@@ -26,6 +26,7 @@ import deviceEventPage from './component/DeviceEventPage'
 import deviceServiceInvoke from './component/DeviceServiceInvoke'
 import deviceServicePage from './component/DeviceServicePage'
 import deviceTopicPage from './component/DeviceTopicPage'
+
 export default {
   name: 'DeviceDetail',
   components: {

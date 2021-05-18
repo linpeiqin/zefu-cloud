@@ -11,7 +11,7 @@ public interface IPropertyGetCache {
      * @param value
      * @return
      * */
-    void propGetValueWrite(String messageId, Object value);
+    void propGetValueWrite(String messageId, String value);
     /**
      * 属性读取操作会在超时时间内不断的调用该方法获取属性值
      * @param messageId

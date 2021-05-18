@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * 业务公共服务降级处理
  * 
@@ -25,10 +27,8 @@ public class RemoteBusComFallbackFactory implements FallbackFactory<RemoteBusCom
         log.error("产品服务调用失败:{}", throwable.getMessage());
         return new RemoteBusComService()
         {
-
-
             @Override
-            public void propGetValueWrite(String messageId, Object value) {
+            public void propGetValueWrite(String messageId, String value) {
 
             }
 

@@ -1,6 +1,7 @@
 package com.zefu.business.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
@@ -72,6 +73,7 @@ public class BusProductManageController extends BaseController
     public AjaxResult changeStatus(@RequestBody BusProductManage busProductManage)
     {
         busProductManage.setUpdateBy(SecurityUtils.getUsername());
+        busProductManage.setUpdateTime(new Date());
         return toAjax(busProductManageService.updateProductStatus(busProductManage));
     }
     /**
@@ -155,11 +157,11 @@ public class BusProductManageController extends BaseController
     @GetMapping("/topics")
     public AjaxResult  topics(){
         List<TopicDescBo> list = new ArrayList<TopicDescBo>();
-        list.add(TopicDescBo.build("属性上报", "up/设备编码/prop", null));
-        list.add(TopicDescBo.build("事件上报", "up/设备编码/event", null));
-        list.add(TopicDescBo.build("下行数据返回结果上报", "up/设备编码/message/reply" , "设备上报下行数据返回结果(服务&属性设置)"));
-        list.add(TopicDescBo.build("调用设备服务", "down/设备编码/service/invoke", null));
-        list.add(TopicDescBo.build("设备属性设置", "down/设备编码/property/set", "设备属性设置"));
+        list.add(TopicDescBo.build("属性上报", "up/产品编码|网关设备编码/设备编码/prop", null));
+        list.add(TopicDescBo.build("事件上报", "up/产品编码|网关设备编码/设备编码/event", null));
+        list.add(TopicDescBo.build("下行数据返回结果上报", "up/产品编码|网关设备编码/设备编码/message/reply" , "设备上报下行数据返回结果(服务&属性设置)"));
+        list.add(TopicDescBo.build("调用设备服务", "down/产品编码|网关设备编码/设备编码/service/invoke", null));
+        list.add(TopicDescBo.build("设备属性设置", "down/产品编码|网关设备编码/设备编码/property/set", "设备属性设置"));
         return AjaxResult.success(list);
     }
     @GetMapping("/queryProtocolCodeByCode")

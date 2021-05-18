@@ -86,7 +86,13 @@ public class PubMqttClient {
     public void publish(String topic, byte[] pushMessage) {
         publish(MqttQoS.AT_LEAST_ONCE.value(), false, topic, pushMessage);
     }
-
+    public void subscribe(String topic){
+        try {
+            this.mqttClient.subscribe(topic);
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 发布
      *

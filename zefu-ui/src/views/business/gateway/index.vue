@@ -45,10 +45,11 @@
 </template>
 
 <script>
-import { deviceSubApi } from '@/api/business/device'
-import { productQueryApi } from '@/api/business/product'
+import {deviceSubApi} from '@/api/business/device'
+import {productQueryApi} from '@/api/business/product'
 import subAdd from './component/SubAdd'
 import subRemove from './component/SubRemove'
+
 export default {
   components: { subAdd, subRemove },
   data() {

@@ -108,7 +108,7 @@ public class ServiceInvokeExecutor {
     private Boolean setRtCache(ProductFuncTypeEnum funcType, String deviceCode, Date arriveTime,
                                EsInsertDataBo dataBo) {
         String redisKey = RedisKeyUtil.buildRtCacheKey(deviceCode, funcType);
-        cacheTemplate.addHashMap(redisKey, dataBo.getIdentifier(), dataBo.getEsMessage());
+        cacheTemplate.addHashMap(redisKey, dataBo.getIdentifier(), JSONProvider.toJSONString(dataBo.getEsMessage()));
         return true;
     }
 

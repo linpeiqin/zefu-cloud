@@ -18,10 +18,10 @@ export function getDevice(id) {
 }
 
 // 状态修改
-export function changeDeviceStatus(id, status) {
+export function changeDeviceStatus(id, enableStatus) {
   const data = {
     id,
-    status
+    enableStatus
   }
   return request({
     url: '/business/device/changeStatus',

@@ -32,7 +32,7 @@ import textTree from "./TextTree";
 import boolTree from "./BoolTree";
 import structTree from "./StructTree";
 import dateTree from "./DateTree";
-import { productDataTypeApi } from "@/api/business/product";
+import {productDataTypeApi} from "@/api/business/product";
 
 export default {
   name: "ByteTree",

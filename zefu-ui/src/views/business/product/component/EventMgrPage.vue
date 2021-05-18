@@ -144,9 +144,12 @@
 
 import {
   productFuncList,
-  productPropsApi, propDelApi,
-  propDetailApi, propsCreateApi,
-  propsEditApi, propsReleaseApi, propsTemplateApi
+  propDelApi,
+  propDetailApi,
+  propsCreateApi,
+  propsEditApi,
+  propsReleaseApi,
+  propsTemplateApi
 } from '@/api/business/product'
 
 export default {

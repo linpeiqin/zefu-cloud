@@ -107,14 +107,16 @@ public class StandardProtocolService implements IBaseProtocol {
             Map<String, Object> map = JSONProvider.parseObjectDefValue(msg, Map.class);
             deviceMessage.setMessageId((String)map.get("messageId"));
             deviceMessage.setReplyMessage(msg);
-            ReplyResultBo replyResultBo = JSONProvider.parseJsonObject((JSONObject)map.get("result"), ReplyResultBo.class);
+            deviceMessage.setStatus(DeviceReplyEnum.SUCCESS);
+            //此处还没想好怎么弄，总感觉原来的设定比较不可靠
+           /* ReplyResultBo replyResultBo = JSONProvider.parseJsonObject((JSONObject)map.get("result"), ReplyResultBo.class);
             if(200 == replyResultBo.getCode()){
                 deviceMessage.setStatus(DeviceReplyEnum.SUCCESS);
             }else if(-1 == replyResultBo.getCode()){
                 deviceMessage.setStatus(DeviceReplyEnum.UNKNOWN);
             }else{
                 deviceMessage.setStatus(DeviceReplyEnum.FAIL);
-            }
+            }*/
         }catch (Exception e){
             log.warn("解析协议异常", e);
             String extraMsg = "解析主题:"+ topic +" 的回执消息异常";
@@ -159,7 +161,7 @@ public class StandardProtocolService implements IBaseProtocol {
     }
     private void parseSubOffline(String topic, byte[] payload, DeviceReportMessage deviceMessage){
         try{
-            if(!topic.endsWith("online")){
+            if(!topic.endsWith("offline")){
                 return;
             }
             String msg = new String(payload, Constants.GLOBAL.CHARSET_GB2312);

@@ -22,8 +22,15 @@ public class GatewayBootService {
     DeviceReplyConsume deviceReplyConsume;
     @Autowired
     PropertyReaderConsume propertyReaderConsume;
+
+    @Autowired
+    MqttUpMessageConsume mqttUpMessageConsume;
+
+    @Autowired
+    MqttDeviceStatusConsume mqttDeviceStatusConsume;
     @Autowired
     PubMqttClient pubMqttClient;
+
 
     public void boot() {
         try {
@@ -36,6 +43,10 @@ public class GatewayBootService {
                 propertyReaderConsume.execute();
             }
             pubMqttClient.init();
+            for (int i = 0; i < 5; i++) {
+                mqttUpMessageConsume.execute();
+                mqttDeviceStatusConsume.execute();
+            }
         } catch (Exception e) {
             log.warn("启动监听线程异常，系统将终止", e);
             System.exit(-1);

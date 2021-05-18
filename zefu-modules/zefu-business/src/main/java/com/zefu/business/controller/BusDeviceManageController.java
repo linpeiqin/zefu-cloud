@@ -261,13 +261,14 @@ public class BusDeviceManageController extends BaseController
     }
 
     //以下为开放接口
-    @PostMapping("/activeDevice")
-    public R<Boolean> activeDevice(DeviceActiveMqBo bo){
+    @RequestMapping(method = RequestMethod.POST, value = "/activeDevice",consumes="application/json")
+    public R<Boolean> activeDevice(@RequestBody DeviceActiveMqBo bo){
         this.busDeviceManageService.activeDevice(bo);
         return R.ok();
     }
-    @PostMapping("/batchChangeStatusByCode")
-    public R<Boolean> batchChangeStatusByCode(List<String> devices, BatchOpEnum batchOpEnum){
+    //以下为开放接口
+    @RequestMapping(method = RequestMethod.POST, value = "/batchChangeStatusByCode",consumes="application/json")
+    public R<Boolean> batchChangeStatusByCode(@RequestBody List<String> devices, @RequestBody BatchOpEnum batchOpEnum){
         this.busDeviceManageService.batchChangeStatusByCode(devices,batchOpEnum);
         return R.ok();
     }

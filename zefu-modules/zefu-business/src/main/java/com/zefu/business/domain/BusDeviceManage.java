@@ -68,7 +68,7 @@ public class BusDeviceManage extends BaseEntity
 
     /** 状态 */
     @Excel(name = "状态")
-    private String status;
+    private String enableStatus;
 
 
 
@@ -87,7 +87,7 @@ public class BusDeviceManage extends BaseEntity
             .append("firmwareVersion", getFirmwareVersion())
             .append("devHost", getDevHost())
             .append("devPort", getDevPort())
-            .append("status", getStatus())
+            .append("enableStatus", getEnableStatus())
             .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())
             .append("updateBy", getUpdateBy())

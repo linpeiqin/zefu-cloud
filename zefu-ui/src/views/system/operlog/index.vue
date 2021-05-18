@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import { list, delOperlog, cleanOperlog } from "@/api/system/operlog";
+import {cleanOperlog, delOperlog, list} from "@/api/system/operlog";
 
 export default {
   name: "Operlog",

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { productUnitsApi } from '@/api/business/product'
+import {productUnitsApi} from '@/api/business/product'
 
 export default {
   name: 'NumberTree',

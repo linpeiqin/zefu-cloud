@@ -132,9 +132,13 @@
 <script>
 
 import {
-  productFuncList, propDelApi,
-  propDetailApi, propsCreateApi,
-  propsEditApi, propsReleaseApi, propsTemplateApi
+  productFuncList,
+  propDelApi,
+  propDetailApi,
+  propsCreateApi,
+  propsEditApi,
+  propsReleaseApi,
+  propsTemplateApi
 } from '@/api/business/product'
 
 export default {

@@ -20,7 +20,7 @@ public class DevicePageResDto {
 
     private Integer delFlag;
 
-    private Integer enableStatus;
+    private String enableStatus;
 
     private Integer activeStatus;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern ="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")

@@ -30,8 +30,9 @@
 </template>
 
 <script>
-import { deviceRuntimeApi } from '@/api/business/device'
+import {deviceRuntimeApi} from '@/api/business/device'
 import deviceItemData from './DeviceItemDataList'
+
 export default {
   name: 'DevDetailPage',
   components: { deviceItemData },
