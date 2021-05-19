@@ -90,10 +90,11 @@ public class DeviceMessageReplyExecutor {
      */
     private final void subDeviceActive(DeviceUpMessageBo msg, DeviceReportMessage deviceMessage) {
         String topic = msg.getTopic();
+        String [] devices = (String[]) deviceMessage.getDevices().toArray();
         if (topic.endsWith("offline")) {
-            deviceService.batchChangeStatusByCode(deviceMessage.getDevices(), BatchOpEnum.OFFLINE);
+            deviceService.batchChangeStatusByCode(devices, BatchOpEnum.OFFLINE);
         } else if (topic.endsWith("online")) {
-            deviceService.batchChangeStatusByCode(deviceMessage.getDevices(), BatchOpEnum.ONLINE);
+            deviceService.batchChangeStatusByCode(devices, BatchOpEnum.ONLINE);
         }
     }
 

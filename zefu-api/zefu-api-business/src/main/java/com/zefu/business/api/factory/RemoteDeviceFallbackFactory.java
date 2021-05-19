@@ -36,7 +36,7 @@ public class RemoteDeviceFallbackFactory implements FallbackFactory<RemoteDevice
             }
 
             @Override
-            public R<Boolean> batchChangeStatusByCode(List<String> devices, BatchOpEnum batchOpEnum) {
+            public R<Boolean> batchChangeStatusByCode(String[] devices, BatchOpEnum batchOpEnum) {
                 return null;
             }
 

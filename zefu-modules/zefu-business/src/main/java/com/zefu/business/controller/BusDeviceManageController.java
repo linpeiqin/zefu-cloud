@@ -42,6 +42,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -268,8 +269,9 @@ public class BusDeviceManageController extends BaseController
     }
     //以下为开放接口
     @RequestMapping(method = RequestMethod.POST, value = "/batchChangeStatusByCode",consumes="application/json")
-    public R<Boolean> batchChangeStatusByCode(@RequestParam List<String> devices, @RequestBody BatchOpEnum batchOpEnum){
-        this.busDeviceManageService.batchChangeStatusByCode(devices,batchOpEnum);
+    public R<Boolean> batchChangeStatusByCode(@RequestParam String[] devices, @RequestBody BatchOpEnum batchOpEnum){
+        List<String> deviceList = Arrays.asList(devices);
+        this.busDeviceManageService.batchChangeStatusByCode(deviceList,batchOpEnum);
         return R.ok();
     }
     @GetMapping("/queryByDevCode")

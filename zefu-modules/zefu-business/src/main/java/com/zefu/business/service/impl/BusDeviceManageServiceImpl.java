@@ -398,9 +398,10 @@ public class BusDeviceManageServiceImpl implements IBusDeviceManageService {
         } else if (BatchOpEnum.ONLINE.equals(batchOpEnum)) {
             busDeviceManageMapper.batchOnlineByCode(devices);
         }
-        for (String deviceCode : devices) {
+        this.deviceOfflineCache.cacheBatchWriter(devices,batchOpEnum);
+        /*for (String deviceCode : devices) {
             deviceCache.remove(deviceCode);
-        }
+        }*/
     }
 
     @Override

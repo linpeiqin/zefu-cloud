@@ -87,10 +87,16 @@ public class DeviceMessageUpExecutor {
      */
     private final void subDeviceActive(DeviceUpMessageBo msg, DeviceReportMessage deviceMessage) {
         String topic = msg.getTopic();
+        if (deviceMessage.getDevices() == null  || deviceMessage.getDevices().size() == 0) {
+            return ;
+        }
+        List<String> deviceList =deviceMessage.getDevices();
+        String [] devices = new String[deviceList.size()];
+        deviceList.toArray(devices);
         if (topic.endsWith("offline")) {
-            deviceService.batchChangeStatusByCode(deviceMessage.getDevices(), BatchOpEnum.OFFLINE);
+            deviceService.batchChangeStatusByCode(devices, BatchOpEnum.OFFLINE);
         } else if (topic.endsWith("online")) {
-            deviceService.batchChangeStatusByCode(deviceMessage.getDevices(), BatchOpEnum.ONLINE);
+            deviceService.batchChangeStatusByCode(devices, BatchOpEnum.ONLINE);
         }
     }
 

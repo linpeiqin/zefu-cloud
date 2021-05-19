@@ -73,7 +73,6 @@ public class PubMqttCallback implements MqttCallback {
     }
     private void sendMq(String topic,MqttMessage message){
         if(topic.startsWith(Constants.MQTT.GLOBAL_UP_PREFIX)){
-            /**只处理上行*/
             DeviceUpMessageBo deviceUpMessageBo = new DeviceUpMessageBo();
             deviceUpMessageBo.setTopic(topic);
             deviceUpMessageBo.setPacketId((long)message.getId());

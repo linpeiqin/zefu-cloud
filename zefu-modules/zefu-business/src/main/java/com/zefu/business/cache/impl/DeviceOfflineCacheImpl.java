@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Service
@@ -85,6 +82,7 @@ public class DeviceOfflineCacheImpl implements IDeviceOfflineCache {
             bo.setDeviceCode(deviceCode);
             Boolean activeStatus = batchOpEnum.equals(BatchOpEnum.ONLINE) ? true : false;
             bo.setActive(activeStatus);
+            bo.setTimestamp(new Date());
             this.cacheWriter(bo);
         }
 

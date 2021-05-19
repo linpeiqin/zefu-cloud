@@ -151,7 +151,8 @@ public class StandardProtocolService implements IBaseProtocol {
                 return;
             }
             String msg = new String(payload, Constants.GLOBAL.CHARSET_GB2312);
-            List<String> devices = JSONProvider.parseArrayObject(msg, String.class);
+            JSONObject jsonObject = JSONProvider.fromString(msg);
+            List<String> devices = JSONProvider.parseArrayObject(JSONProvider.toJSONString(jsonObject.get("devices")), String.class);
             deviceMessage.setDevices(devices);
         }catch (Exception e){
             log.warn("解析协议异常", e);
@@ -165,7 +166,8 @@ public class StandardProtocolService implements IBaseProtocol {
                 return;
             }
             String msg = new String(payload, Constants.GLOBAL.CHARSET_GB2312);
-            List<String> devices = JSONProvider.parseArrayObject(msg, String.class);
+            JSONObject jsonObject = JSONProvider.fromString(msg);
+            List<String> devices = JSONProvider.parseArrayObject(JSONProvider.toJSONString(jsonObject.get("devices")), String.class);
             deviceMessage.setDevices(devices);
         }catch (Exception e){
             log.warn("解析协议异常", e);
