@@ -2,7 +2,7 @@ package com.zefu.modules.monitor;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 监控中心
@@ -10,7 +10,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @author ruoyi|linking
  */
 @EnableAdminServer
-@SpringCloudApplication
+@SpringBootApplication
 public class ZeFuMonitorApplication
 {
     public static void main(String[] args)

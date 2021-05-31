@@ -1,6 +1,5 @@
 package com.zefu.job.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -19,7 +18,7 @@ import com.zefu.job.util.CronUtils;
  * 
  * @author ruoyi|linking
  */
-public class SysJob extends BaseEntity implements Serializable
+public class SysJob extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 

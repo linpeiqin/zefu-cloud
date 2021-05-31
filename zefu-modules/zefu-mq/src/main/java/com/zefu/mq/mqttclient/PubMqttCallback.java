@@ -41,7 +41,7 @@ public class PubMqttCallback implements MqttCallback {
         boolean willConnect = true;
         while (willConnect) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(5000);
                 logger.info("连接[{}]断开，尝试重连第{}次", this.client.getServerURI(), count++);
                 this.client.connect(this.options);
                 logger.info("重连成功");
@@ -49,9 +49,7 @@ public class PubMqttCallback implements MqttCallback {
             } catch (Exception e) {
                 logger.warn("重连异常", e);
             }
-
         }
-
     }
 
     @Override
@@ -64,8 +62,8 @@ public class PubMqttCallback implements MqttCallback {
         // subscribe后得到的消息会执行到这里面
         try {
             String msg = new String(message.getPayload());
-            this.sendMq(topic,message);
             logger.warn("发布消息客户端{}接收消息主题 : {}   消息内容: {}", client.getServerURI(), topic, msg);
+            this.sendMq(topic,message);
         } catch (Exception e) {
             logger.warn("mqtt 订阅消息异常", e);
         }

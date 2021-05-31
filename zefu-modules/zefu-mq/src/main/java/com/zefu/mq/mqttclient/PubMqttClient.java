@@ -33,10 +33,11 @@ public class PubMqttClient {
     public void init() {
         try {
             this.mqttClient = new MqttClient(mqttUrl, this.genClientId(), new MemoryPersistence());
-            this.options.setCleanSession(true);
+            //this.options.setCleanSession(true);
             this.options.setAutomaticReconnect(true);
             this.options.setConnectionTimeout(timeout);
             this.options.setKeepAliveInterval(keepAlive);
+            this.options.setCleanSession(false);
             try {
                 this.mqttClient.connect(options);
                 this.mqttClient.setCallback(new PubMqttCallback(this.mqttClient, options, mqttUrl));
@@ -53,8 +54,8 @@ public class PubMqttClient {
     }
 
     private final String genClientId() {
-        String clientId = Constants.MQTT.SYS_CLIENT_TOPIC_PREFIX + UUID
-                .randomUUID().toString().replaceAll("-", "");
+        String clientId = Constants.MQTT.SYS_CLIENT_TOPIC_PREFIX/* + UUID
+                .randomUUID().toString().replaceAll("-", "")*/;
         return clientId;
     }
 

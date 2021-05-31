@@ -19,7 +19,7 @@ import java.util.*;
 public class DeviceOfflineCacheImpl implements IDeviceOfflineCache {
     @Autowired
     private RedisService cacheTemplate;
-    @Value("${zefu.device.ping.expire:120000}")
+    @Value("${zefu.device.ping.expire:60000}")
     private Integer expired;
 
     @Override
@@ -29,7 +29,12 @@ public class DeviceOfflineCacheImpl implements IDeviceOfflineCache {
             cacheTemplate.deleteObject(key);
             cacheTemplate.zRem(Constants.REDIS_KEY.DEVICE_ONLINE, deviceActiveMqBo.getDeviceCode());
         }else {
-            cacheTemplate.set(key, deviceActiveMqBo, expired/1000);
+            //此处不处理直连设备，直连设备还未考虑
+            if (deviceActiveMqBo.getHost() == null){
+                cacheTemplate.set(key,deviceActiveMqBo,expired/1000);
+            } else {
+                cacheTemplate.set(key, deviceActiveMqBo);
+            }
             Double score = new Double(System.currentTimeMillis()/1000);
             cacheTemplate.zAdd(Constants.REDIS_KEY.DEVICE_ONLINE, score, deviceActiveMqBo.getDeviceCode());
         }

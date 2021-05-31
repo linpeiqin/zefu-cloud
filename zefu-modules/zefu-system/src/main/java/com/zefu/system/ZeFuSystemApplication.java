@@ -1,7 +1,7 @@
 package com.zefu.system;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.zefu.common.security.annotation.EnableCustomConfig;
 import com.zefu.common.security.annotation.EnableRyFeignClients;
 import com.zefu.common.swagger.annotation.EnableCustomSwagger2;
@@ -14,7 +14,7 @@ import com.zefu.common.swagger.annotation.EnableCustomSwagger2;
 @EnableCustomConfig
 @EnableCustomSwagger2
 @EnableRyFeignClients
-@SpringCloudApplication
+@SpringBootApplication
 public class ZeFuSystemApplication
 {
     public static void main(String[] args)

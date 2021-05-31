@@ -25,6 +25,15 @@ public class DictUtils
     {
         SpringUtils.getBean(RedisService.class).setCacheObject(getCacheKey(key), dictDatas);
     }
+    /**
+     * 删除指定字典缓存
+     *
+     * @param key 字典键
+     */
+    public static void removeDictCache(String key)
+    {
+        SpringUtils.getBean(RedisService.class).deleteObject(getCacheKey(key));
+    }
 
     /**
      * 获取字典缓存

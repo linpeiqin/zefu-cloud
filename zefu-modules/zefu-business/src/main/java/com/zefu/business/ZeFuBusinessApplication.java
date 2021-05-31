@@ -1,12 +1,10 @@
 package com.zefu.business;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.zefu.common.security.annotation.EnableCustomConfig;
 import com.zefu.common.security.annotation.EnableRyFeignClients;
 import com.zefu.common.swagger.annotation.EnableCustomSwagger2;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 /**
@@ -17,7 +15,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @EnableCustomConfig
 @EnableCustomSwagger2
 @EnableRyFeignClients
-@SpringCloudApplication
+@SpringBootApplication
 @EnableElasticsearchRepositories(basePackages = "com.zefu.common.storage.es")
 public class ZeFuBusinessApplication
 {
