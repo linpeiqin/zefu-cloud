@@ -1,0 +1,6 @@
+com\zefu\common\protocol\plugin\hw\StandardProtocolService.class
+com\zefu\common\protocol\service\IProtocolUtilService.class
+com\zefu\common\protocol\plugin\demo\DemoProtocolService.class
+com\zefu\common\protocol\domain\demo\ReplyResultBo.class
+com\zefu\common\protocol\service\impl\ProtocolUtilServiceImpl.class
+com\zefu\common\protocol\base\IBaseProtocol.class

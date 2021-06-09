@@ -1,8 +1,0 @@
-com\zefu\common\es\config\enums\KeyMatchTypeEnum.class
-com\zefu\common\es\impl\SampleEsClientImpl.class
-com\zefu\common\es\domain\SearchItem.class
-com\zefu\common\es\domain\EsRange.class
-com\zefu\common\es\config\enums\EsMetaType.class
-com\zefu\common\es\SampleEsClient.class
-com\zefu\common\es\utils\JsonUtil.class
-com\zefu\common\es\domain\PropertiesItem.class

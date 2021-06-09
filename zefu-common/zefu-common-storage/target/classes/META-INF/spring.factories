@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zefu.common.storage.service.impl.DataCenterServiceImpl,\
+  com.zefu.common.storage.service.impl.MessageReplyServiceImpl
+org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories=\
+  com.zefu.common.storage.es.MessageReplyRepository
+
+  
