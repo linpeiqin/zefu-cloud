@@ -6,9 +6,9 @@ import com.zefu.common.base.domain.gateway.mq.DeviceActiveMqBo;
 import com.zefu.common.base.enums.BatchOpEnum;
 import com.zefu.common.core.domain.R;
 
-import feign.hystrix.FallbackFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 

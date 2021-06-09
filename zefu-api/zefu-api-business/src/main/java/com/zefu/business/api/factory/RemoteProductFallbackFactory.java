@@ -5,9 +5,9 @@ import com.zefu.business.api.RemoteProductService;
 import com.zefu.common.base.domain.dto.request.ProductFuncItemResDto;
 import com.zefu.common.base.metadata.ProductFuncTypeEnum;
 import com.zefu.common.core.domain.R;
-import feign.hystrix.FallbackFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

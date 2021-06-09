@@ -3,9 +3,9 @@ package com.zefu.business.api.factory;
 import com.zefu.business.api.RemoteBusComService;
 import com.zefu.business.api.RemoteProductService;
 import com.zefu.common.core.domain.R;
-import feign.hystrix.FallbackFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

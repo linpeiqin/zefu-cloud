@@ -2,11 +2,11 @@ package com.zefu.system.api.factory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 import com.zefu.common.core.domain.R;
 import com.zefu.system.api.RemoteLogService;
 import com.zefu.system.api.domain.SysOperLog;
-import feign.hystrix.FallbackFactory;
 
 /**
  * 日志服务降级处理
