@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.zefu.business.api.factory.RemoteBusComFallbackFactory,\
-  com.zefu.business.api.factory.RemoteDeviceFallbackFactory, \
-  com.zefu.business.api.factory.RemoteProductFallbackFactory,\
-  com.zefu.business.api.factory.RemoteProductFuncFallbackFactory

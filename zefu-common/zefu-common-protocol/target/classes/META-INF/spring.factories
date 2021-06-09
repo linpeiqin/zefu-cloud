@@ -1,6 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.zefu.common.protocol.service.impl.ProtocolUtilServiceImpl,\
-    com.zefu.common.protocol.plugin.demo.DemoProtocolService,\
-    com.zefu.common.protocol.plugin.hw.StandardProtocolService
-
-  
