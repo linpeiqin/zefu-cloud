@@ -21,7 +21,7 @@ import java.util.Map;
  * @date 2021-03-19
  */
 @RestController
-@RequestMapping("/aaaaaaacom")
+@RequestMapping("/com")
 public class BusComController {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
