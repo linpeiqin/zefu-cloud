@@ -8,6 +8,7 @@
 /zefu-common/zefu-common-redis/target/
 /zefu-common/zefu-common-security/target/
 /zefu-common/zefu-common-swagger/target/
+/zefu-common/zefu-common-es/target/
 /zefu-gateway/target/
 /zefu-modules/zefu-business/target/
 /zefu-modules/zefu-file/target/
@@ -15,7 +16,8 @@
 /zefu-modules/zefu-job/target/
 /zefu-modules/zefu-system/target/
 /zefu-visual/zefu-monitor/target/
-/
+/zefu-modules/zefu-business/target/
+/zefu-modules/zefu-mq/target/
 ### Example user template template
 ### Example user template
 
