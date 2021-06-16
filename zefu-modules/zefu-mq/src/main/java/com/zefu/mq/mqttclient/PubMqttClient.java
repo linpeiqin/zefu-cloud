@@ -1,22 +1,33 @@
 package com.zefu.mq.mqttclient;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zefu.common.base.constants.Constants;
+import com.zefu.common.base.domain.gateway.mq.DeviceActiveMqBo;
+import com.zefu.common.base.domain.gateway.mq.DeviceUpMessageBo;
 import com.zefu.common.base.enums.ErrorEnum;
 import com.zefu.common.base.exception.GException;
+import com.zefu.mq.producer.DeviceActiveMqProducer;
+import com.zefu.mq.producer.DeviceReplyMessageProducer;
+import com.zefu.mq.producer.DeviceUpMessageProducer;
 import io.netty.handler.codec.mqtt.MqttQoS;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.UUID;
 
 
 @Service
 @Slf4j
-public class PubMqttClient {
+public class PubMqttClient implements MqttCallback {
+    private static final Logger logger = LoggerFactory.getLogger(PubMqttClient.class);
     private MqttClient mqttClient;
     @Value("${mqtt.client.url}")
     String mqttUrl;
@@ -29,6 +40,7 @@ public class PubMqttClient {
      * 用于标记是否连接成功
      */
     private boolean isConnected = false;
+    private int count = 1;
 
     public void init() {
         try {
@@ -40,7 +52,7 @@ public class PubMqttClient {
             this.options.setCleanSession(false);
             try {
                 this.mqttClient.connect(options);
-                this.mqttClient.setCallback(new PubMqttCallback(this.mqttClient, options, mqttUrl));
+                this.mqttClient.setCallback(this);
                 this.isConnected = true;
             } catch (Exception e) {
                 log.warn("连接MQTT服务器", e);
@@ -87,13 +99,15 @@ public class PubMqttClient {
     public void publish(String topic, byte[] pushMessage) {
         publish(MqttQoS.AT_LEAST_ONCE.value(), false, topic, pushMessage);
     }
-    public void subscribe(String topic){
+
+    public void subscribe(String topic) {
         try {
             this.mqttClient.subscribe(topic);
         } catch (MqttException e) {
             e.printStackTrace();
         }
     }
+
     /**
      * 发布
      *
@@ -125,6 +139,92 @@ public class PubMqttClient {
         } catch (MqttException e) {
             log.warn("向主题[{}]发布消息异常{}", topic, e);
             throw GException.genException(ErrorEnum.INVALID_MQTT_USER);
+        }
+    }
+
+    @Override
+    public void connectionLost(Throwable throwable) {
+        isConnected = false;
+        try {
+            log.info("连接[{}]断开，尝试重连第{}次", this.mqttUrl, count++);
+            this.mqttClient.connect(this.options);
+            this.isConnected = true;
+        } catch (Exception e) {
+            log.warn("重连异常");
+        }
+    }
+
+    @Override
+    public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
+        // subscribe后得到的消息会执行到这里面
+        try {
+            String msg = new String(mqttMessage.getPayload());
+            logger.warn("发布消息客户端{}接收消息主题 : {}   消息内容: {}", mqttClient.getServerURI(), topic, msg);
+            this.sendMq(topic, mqttMessage);
+        } catch (Exception e) {
+            logger.warn("mqtt 订阅消息异常", e);
+        }
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
+
+    }
+
+    private void sendMq(String topic, MqttMessage message) {
+        if (!isConnected){
+            return;
+        }
+        if (topic.startsWith(Constants.MQTT.GLOBAL_UP_PREFIX)) {
+            DeviceUpMessageBo deviceUpMessageBo = new DeviceUpMessageBo();
+            deviceUpMessageBo.setTopic(topic);
+            deviceUpMessageBo.setPacketId((long) message.getId());
+            deviceUpMessageBo.setSourceMsg(message.getPayload());
+            if (topic.endsWith(Constants.TOPIC.MSG_REPLY)
+                    || topic.endsWith(Constants.TOPIC.PROP_GET_REPLY)
+                    || topic.endsWith(Constants.TOPIC.UPGRADE_REPLY)) {
+                DeviceReplyMessageProducer.send(deviceUpMessageBo);
+            } else {
+                DeviceUpMessageProducer.send(deviceUpMessageBo);
+            }
+        }
+        if (topic.startsWith("$SYS/brokers/")) {
+            //处理网关和直连设备在线状态
+            String msg = new String(message.getPayload());
+            JSONObject jsonObject = JSON.parseObject(msg);
+            String clientId = String.valueOf(jsonObject.get("clientid"));
+            String username = String.valueOf(jsonObject.get("username"));
+            String sockport = String.valueOf(jsonObject.get("sockport"));
+            String ipaddress = String.valueOf(jsonObject.get("ipaddress"));
+            if (topic.endsWith("disconnected")) {
+                this.sendActiveOfflineMQ(clientId);
+                logger.warn("客户端已掉线：{}", clientId);
+            } else {
+                this.sendActiveOnlineMQ(clientId, username, sockport, ipaddress);
+                logger.warn("客户端已上线：{}", clientId);
+            }
+        }
+
+    }
+
+    public static void sendActiveOnlineMQ(String clientId, String username, String sockport, String ipaddress) {
+        DeviceActiveMqBo deviceActiveMqBo = new DeviceActiveMqBo();
+        deviceActiveMqBo.setHost(ipaddress);
+        deviceActiveMqBo.setActive(true);
+        deviceActiveMqBo.setPort(Integer.valueOf(sockport));
+        deviceActiveMqBo.setDeviceCode(clientId);
+        deviceActiveMqBo.setTimestamp(new Date());
+        DeviceActiveMqProducer.send(deviceActiveMqBo);
+    }
+
+    public static void sendActiveOfflineMQ(String clientId) {
+        try {
+            DeviceActiveMqBo deviceActiveMqBo = new DeviceActiveMqBo();
+            deviceActiveMqBo.setActive(false);
+            deviceActiveMqBo.setDeviceCode(clientId);
+            DeviceActiveMqProducer.send(deviceActiveMqBo);
+        } catch (Exception e) {
+            logger.warn("发生设备下线消息异常{}", clientId, e);
         }
     }
 }

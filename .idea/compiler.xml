@@ -10,6 +10,8 @@
         <module name="zefu-modules-system" />
         <module name="zefu-common-core" />
         <module name="zefu-modules-file" />
+        <module name="zefu-modules-mq" />
+        <module name="zefu-common-storage" />
         <module name="zefu-auth" />
         <module name="zefu-modules-gen" />
         <module name="zefu-common-log" />
@@ -17,28 +19,35 @@
         <module name="zefu-common-redis" />
         <module name="zefu-api-system" />
         <module name="zefu-common-security" />
+        <module name="zefu-common-base" />
         <module name="zefu-gateway" />
         <module name="zefu-visual-monitor" />
         <module name="zefu-common-es" />
         <module name="zefu-modules-job" />
         <module name="zefu-common-datascope" />
         <module name="zefu-modules-business" />
+        <module name="zefu-common-protocol" />
         <module name="zefu-common-datasource" />
+        <module name="zefu-api-business" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="zefu" target="1.8" />
       <module name="zefu-api" target="1.8" />
+      <module name="zefu-api-business" target="1.8" />
       <module name="zefu-api-system" target="1.8" />
       <module name="zefu-auth" target="1.8" />
       <module name="zefu-common" target="1.8" />
+      <module name="zefu-common-base" target="1.8" />
       <module name="zefu-common-core" target="1.8" />
       <module name="zefu-common-datascope" target="1.8" />
       <module name="zefu-common-datasource" target="1.8" />
       <module name="zefu-common-es" target="1.8" />
       <module name="zefu-common-log" target="1.8" />
+      <module name="zefu-common-protocol" target="1.8" />
       <module name="zefu-common-redis" target="1.8" />
       <module name="zefu-common-security" target="1.8" />
+      <module name="zefu-common-storage" target="1.8" />
       <module name="zefu-common-swagger" target="1.8" />
       <module name="zefu-gateway" target="1.8" />
       <module name="zefu-modules" target="1.8" />
@@ -46,6 +55,7 @@
       <module name="zefu-modules-file" target="1.8" />
       <module name="zefu-modules-gen" target="1.8" />
       <module name="zefu-modules-job" target="1.8" />
+      <module name="zefu-modules-mq" target="1.8" />
       <module name="zefu-modules-system" target="1.8" />
       <module name="zefu-visual" target="1.8" />
       <module name="zefu-visual-monitor" target="1.8" />
